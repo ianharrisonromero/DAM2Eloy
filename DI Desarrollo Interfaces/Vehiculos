@@ -1,0 +1,16 @@
+cd /Users/iehr/Desktop/DAM2Eloy/DI Desarrollo Interfaces/ProyectoVehiculos; JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-16.0.2.jdk/Contents/Home "/Applications/NetBeans/Apache NetBeans 12.6.app/Contents/Resources/NetBeans/netbeans/java/maven/bin/mvn" -Dexec.vmArgs= "-Dexec.args=${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}" -Dexec.appArgs= -Dexec.mainClass=com.mycompany.proyectovehiculos.VehiculosJFrame -Dexec.executable=/Library/Java/JavaVirtualMachines/jdk-16.0.2.jdk/Contents/Home/bin/java org.codehaus.mojo:exec-maven-plugin:3.0.0:exec
+Running NetBeans Compile On Save execution. Phase execution is skipped and output directories of dependency projects (with Compile on Save turned on) will be used instead of their jar artifacts.
+Scanning for projects...
+
+------------------< com.mycompany:ProyectoVehiculos >-------------------
+Building ProyectoVehiculos 1.0-SNAPSHOT
+--------------------------------[ jar ]---------------------------------
+
+--- exec-maven-plugin:3.0.0:exec (default-cli) @ ProyectoVehiculos ---
+Has seleccionado un/una  
+------------------------------------------------------------------------
+BUILD SUCCESS
+------------------------------------------------------------------------
+Total time:  6.717 s
+Finished at: 2023-09-18T20:58:25+02:00
+------------------------------------------------------------------------
