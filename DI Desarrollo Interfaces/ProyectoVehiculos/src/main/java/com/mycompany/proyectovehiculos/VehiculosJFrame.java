@@ -4,18 +4,19 @@
  */
 package com.mycompany.proyectovehiculos;
 
+import java.awt.Color;
+
 /**
  *
  * @author iehr
  */
 public class VehiculosJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VehiculosJFrame
-     */
     public VehiculosJFrame() {
         initComponents();
+        jLabelCombustibleObligao.setVisible(false);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,6 +27,7 @@ public class VehiculosJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoCombustible = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         ButtonReset = new javax.swing.JButton();
         TextFieldMarca = new javax.swing.JTextField();
@@ -41,6 +43,13 @@ public class VehiculosJFrame extends javax.swing.JFrame {
         CheckBoxSidecar = new javax.swing.JCheckBox();
         CheckBoxRemolque = new javax.swing.JCheckBox();
         ButtonEnviar = new javax.swing.JButton();
+        jRadioGasolina = new javax.swing.JRadioButton();
+        jRadioDiesel = new javax.swing.JRadioButton();
+        jRadioElectrico = new javax.swing.JRadioButton();
+        jComboColor = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabelCombustible = new javax.swing.JLabel();
+        jLabelCombustibleObligao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 204));
@@ -71,7 +80,7 @@ public class VehiculosJFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Modelo");
 
-        jLabel4.setText("Tipo de vehículo");
+        jLabel4.setText("Tipo de vehículo:");
 
         jLabel5.setText("Extras:");
 
@@ -106,6 +115,11 @@ public class VehiculosJFrame extends javax.swing.JFrame {
         CheckBoxSidecar.setText("Sidecar");
 
         CheckBoxRemolque.setText("Remolque");
+        CheckBoxRemolque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckBoxRemolqueActionPerformed(evt);
+            }
+        });
 
         ButtonEnviar.setForeground(new java.awt.Color(51, 153, 0));
         ButtonEnviar.setText("Enviar");
@@ -115,45 +129,95 @@ public class VehiculosJFrame extends javax.swing.JFrame {
             }
         });
 
+        grupoCombustible.add(jRadioGasolina);
+        jRadioGasolina.setText("Gasolina");
+        jRadioGasolina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioGasolinaActionPerformed(evt);
+            }
+        });
+
+        grupoCombustible.add(jRadioDiesel);
+        jRadioDiesel.setText("Diesel");
+        jRadioDiesel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioDieselActionPerformed(evt);
+            }
+        });
+
+        grupoCombustible.add(jRadioElectrico);
+        jRadioElectrico.setText("Eléctrico");
+        jRadioElectrico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioElectricoActionPerformed(evt);
+            }
+        });
+
+        jComboColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blanco", "Negro", "Verde", "Rojo", "Amarillo" }));
+
+        jLabel6.setText("Color:");
+
+        jLabelCombustible.setText("Combustible:");
+
+        jLabelCombustibleObligao.setForeground(new java.awt.Color(255, 51, 51));
+        jLabelCombustibleObligao.setText("Este campo es obligatorio");
+        jLabelCombustibleObligao.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextFieldMarca))
-                .addGap(128, 128, 128))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CheckBoxTurismo)
-                            .addComponent(CheckBoxCamion)
-                            .addComponent(CheckBoxMoto)
-                            .addComponent(jLabel4))
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(CheckBoxDescapotao)
-                            .addComponent(CheckBoxSidecar)
-                            .addComponent(CheckBoxRemolque)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(102, 102, 102)
                         .addComponent(ButtonReset)
+                        .addGap(92, 92, 92)
+                        .addComponent(ButtonEnviar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CheckBoxTurismo)
+                                    .addComponent(CheckBoxCamion)
+                                    .addComponent(CheckBoxMoto)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(CheckBoxDescapotao)
+                                    .addComponent(CheckBoxSidecar)
+                                    .addComponent(CheckBoxRemolque)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(TextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TextFieldMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel1))))
                         .addGap(18, 18, 18)
-                        .addComponent(ButtonEnviar)
-                        .addGap(47, 47, 47)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioGasolina)
+                                    .addComponent(jRadioDiesel)
+                                    .addComponent(jRadioElectrico)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabelCombustible)
+                                        .addGap(2, 2, 2)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelCombustibleObligao)))))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,40 +231,55 @@ public class VehiculosJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(TextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CheckBoxTurismo)
-                    .addComponent(CheckBoxDescapotao))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CheckBoxSidecar)
-                    .addComponent(CheckBoxMoto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CheckBoxRemolque)
-                    .addComponent(CheckBoxCamion))
+                    .addComponent(TextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CheckBoxTurismo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CheckBoxMoto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CheckBoxCamion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CheckBoxDescapotao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CheckBoxSidecar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CheckBoxRemolque))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelCombustible)
+                            .addComponent(jLabelCombustibleObligao))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioGasolina)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioDiesel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioElectrico)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonReset)
                     .addComponent(ButtonEnviar))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- 
-    
+
+
     private void TextFieldModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldModeloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextFieldModeloActionPerformed
 
     private void CheckBoxMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxMotoActionPerformed
-        if (CheckBoxMoto.isSelected()){
+        if (CheckBoxMoto.isSelected()) {
             CheckBoxTurismo.setSelected(false);
             CheckBoxCamion.setSelected(false);
             CheckBoxDescapotao.setSelected(false);
@@ -209,7 +288,7 @@ public class VehiculosJFrame extends javax.swing.JFrame {
             CheckBoxRemolque.setEnabled(false);
             CheckBoxSidecar.setEnabled(true);
         }
-        
+
     }//GEN-LAST:event_CheckBoxMotoActionPerformed
 
     private void CheckBoxDescapotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxDescapotaoActionPerformed
@@ -217,24 +296,61 @@ public class VehiculosJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckBoxDescapotaoActionPerformed
 
     private void ButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviarActionPerformed
-        String marca = "";
-        String modelo = "";
-        marca = TextFieldMarca.getText();
-        modelo = TextFieldModelo.getText();
-        System.out.print("Has seleccionado un/una " +marca+ " " +modelo);
-        if (CheckBoxSidecar.isSelected()){
-            System.out.print(" con sidecar");
-        }
-        if (CheckBoxDescapotao.isSelected()){
-            System.out.print(" descapotao");
-        }
-        if (CheckBoxRemolque.isSelected()){
-            System.out.print(" con remolque");
-        }
+
+        if (jRadioDiesel.isSelected() || jRadioElectrico.isSelected() || jRadioGasolina.isSelected()){            
+            String marca = "";
+            String modelo = "";
+            marca = TextFieldMarca.getText();
+            modelo = TextFieldModelo.getText();
+            System.out.println("Has seleccionado un/una " + marca + " " + modelo);
+            if (CheckBoxTurismo.isSelected()) {
+                System.out.println("Tipo de vehículo: Turismo");
+            }
+            if (CheckBoxCamion.isSelected()) {
+                System.out.println("Tipo de vehículo: Camión");
+            }
+            if (CheckBoxMoto.isSelected()) {
+                System.out.println("Tipo de vehículo: Moto");
+            }
+            System.out.println("Color:");
+            System.out.println("- " + jComboColor.getSelectedItem());
+
+            if (CheckBoxSidecar.isSelected() || CheckBoxDescapotao.isSelected() || CheckBoxRemolque.isSelected()) {
+                System.out.println("Extras: ");
+            }
+
+            if (CheckBoxSidecar.isSelected()) {
+                System.out.println("- Sidecar");
+            }
+            if (CheckBoxDescapotao.isSelected()) {
+                System.out.println("- Descapotao");
+            }
+            if (CheckBoxRemolque.isSelected()) {
+                System.out.println("- Remolque");
+            }
+            if (jRadioDiesel.isSelected()) {
+                System.out.println("Combustible:");
+                System.out.println("- Diesel");
+            }
+            if (jRadioGasolina.isSelected()) {
+                System.out.println("Combustible:");
+                System.out.println("- Gasolina");
+            }
+            if (jRadioElectrico.isSelected()) {
+                System.out.println("Combustible:");
+                System.out.println("- Eléctrico");
+            }
+        }else {
+            System.out.println("NO SE PUEDE DEJAR EL CAMPO DE COMBUSTIBLE VACÍO"); 
+            jLabelCombustibleObligao.setVisible(true);
+            jLabelCombustible.setForeground(Color.red);
+            }
+
+
     }//GEN-LAST:event_ButtonEnviarActionPerformed
 
     private void CheckBoxTurismoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxTurismoActionPerformed
-        if (CheckBoxTurismo.isSelected()){
+        if (CheckBoxTurismo.isSelected()) {
             CheckBoxMoto.setSelected(false);
             CheckBoxCamion.setSelected(false);
             CheckBoxSidecar.setSelected(false);
@@ -245,7 +361,7 @@ public class VehiculosJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckBoxTurismoActionPerformed
 
     private void CheckBoxCamionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxCamionActionPerformed
-        if (CheckBoxCamion.isSelected()){
+        if (CheckBoxCamion.isSelected()) {
             CheckBoxMoto.setSelected(false);
             CheckBoxTurismo.setSelected(false);
             CheckBoxSidecar.setSelected(false);
@@ -257,25 +373,45 @@ public class VehiculosJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckBoxCamionActionPerformed
 
     private void ButtonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonResetActionPerformed
-            CheckBoxMoto.setSelected(false);
-            CheckBoxTurismo.setSelected(false);
-            CheckBoxCamion.setSelected(false);
-            CheckBoxSidecar.setSelected(false);
-            CheckBoxDescapotao.setSelected(false);
-            CheckBoxSidecar.setSelected(false);
-            CheckBoxDescapotao.setEnabled(true);
-            CheckBoxRemolque.setEnabled(true);
-            CheckBoxSidecar.setEnabled(true);
-            CheckBoxMoto.setEnabled(true);
-            CheckBoxTurismo.setEnabled(true);
-            CheckBoxCamion.setEnabled(true);
-            TextFieldMarca.setText("");
-            TextFieldModelo.setText("");
+        CheckBoxMoto.setSelected(false);
+        CheckBoxTurismo.setSelected(false);
+        CheckBoxCamion.setSelected(false);
+        CheckBoxSidecar.setSelected(false);
+        CheckBoxDescapotao.setSelected(false);
+        CheckBoxSidecar.setSelected(false);
+        CheckBoxRemolque.setSelected(false);
+        CheckBoxDescapotao.setEnabled(true);
+        CheckBoxRemolque.setEnabled(true);
+        CheckBoxSidecar.setEnabled(true);
+        CheckBoxMoto.setEnabled(true);
+        CheckBoxTurismo.setEnabled(true);
+        CheckBoxCamion.setEnabled(true);
+        grupoCombustible.clearSelection();
+        TextFieldMarca.setText("");
+        TextFieldModelo.setText("");
+        jLabelCombustibleObligao.setVisible(false);
+        jLabelCombustible.setForeground(Color.black);
     }//GEN-LAST:event_ButtonResetActionPerformed
 
     private void TextFieldMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldMarcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextFieldMarcaActionPerformed
+
+    private void jRadioGasolinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioGasolinaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioGasolinaActionPerformed
+
+    private void CheckBoxRemolqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxRemolqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CheckBoxRemolqueActionPerformed
+
+    private void jRadioDieselActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioDieselActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioDieselActionPerformed
+
+    private void jRadioElectricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioElectricoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioElectricoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,7 +443,9 @@ public class VehiculosJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new VehiculosJFrame().setVisible(true);
+                
             }
         });
     }
@@ -323,10 +461,18 @@ public class VehiculosJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox CheckBoxTurismo;
     private javax.swing.JTextField TextFieldMarca;
     private javax.swing.JTextField TextFieldModelo;
+    private javax.swing.ButtonGroup grupoCombustible;
+    private javax.swing.JComboBox<String> jComboColor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabelCombustible;
+    private javax.swing.JLabel jLabelCombustibleObligao;
+    private javax.swing.JRadioButton jRadioDiesel;
+    private javax.swing.JRadioButton jRadioElectrico;
+    private javax.swing.JRadioButton jRadioGasolina;
     // End of variables declaration//GEN-END:variables
 }
