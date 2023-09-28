@@ -1,18 +1,22 @@
 package com.pokemonapi;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class App {
     public static void main(String[] args) {
         try {
             // Replace 'pikachu' with the name of the Pokémon you want to retrieve
-            String pokemonName = "ivysaur";
+            String pokemonNameInput = "ivysaur";
 
             // Construct the API URL
-            String apiUrl = "https://pokeapi.co/api/v2/pokemon/" + pokemonName;
+            String apiUrl = "https://pokeapi.co/api/v2/pokemon/" + pokemonNameInput;
 
             // Create a URL object
             URL url = new URL(apiUrl);
@@ -44,10 +48,17 @@ public class App {
                 // Parse the JSON response
                 String jsonResponse = response.toString();
 
-                System.out.println(jsonResponse);
+                // Use Gson to parse the JSON
+                Gson gson = new Gson();
+                JsonObject jsonObject = gson.fromJson(jsonResponse, JsonObject.class);
 
-                // You can parse the JSON data further to extract specific information about the Pokémon.
-                // For example, you can use a JSON parsing library like Jackson or Gson.
+                // Extract specific information about the Pokémon
+                String pokemonName = jsonObject.get("name").getAsString();
+                int baseExperience = jsonObject.get("base_experience").getAsInt();
+
+                System.out.println("Pokemon Name: " + pokemonName);
+                System.out.println("Base Experience: " + baseExperience);
+
             } else {
                 System.out.println("Failed to retrieve Pokémon information. Status code: " + responseCode);
             }

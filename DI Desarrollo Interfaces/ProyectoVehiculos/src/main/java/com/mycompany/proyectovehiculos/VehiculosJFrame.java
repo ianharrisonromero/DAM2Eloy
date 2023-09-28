@@ -28,6 +28,7 @@ public class VehiculosJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         grupoCombustible = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         ButtonReset = new javax.swing.JButton();
         TextFieldMarca = new javax.swing.JTextField();
@@ -50,6 +51,9 @@ public class VehiculosJFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabelCombustible = new javax.swing.JLabel();
         jLabelCombustibleObligao = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 204));
@@ -163,6 +167,15 @@ public class VehiculosJFrame extends javax.swing.JFrame {
         jLabelCombustibleObligao.setText("Este campo es obligatorio");
         jLabelCombustibleObligao.setToolTipText("");
 
+        buttonGroup1.add(jCheckBox1);
+        jCheckBox1.setText("jCheckBox1");
+
+        buttonGroup1.add(jCheckBox2);
+        jCheckBox2.setText("jCheckBox2");
+
+        buttonGroup1.add(jCheckBox3);
+        jCheckBox3.setText("jCheckBox3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,12 +225,19 @@ public class VehiculosJFrame extends javax.swing.JFrame {
                                     .addComponent(jRadioGasolina)
                                     .addComponent(jRadioDiesel)
                                     .addComponent(jRadioElectrico)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelCombustible)
-                                        .addGap(2, 2, 2)))
+                                    .addComponent(jLabelCombustible))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelCombustibleObligao)))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabelCombustibleObligao)
+                                        .addGap(0, 9, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jCheckBox3, javax.swing.GroupLayout.Alignment.TRAILING))))))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,12 +249,13 @@ public class VehiculosJFrame extends javax.swing.JFrame {
                     .addComponent(TextFieldMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6)))
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(TextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -260,14 +281,23 @@ public class VehiculosJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioGasolina)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioDiesel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioElectrico)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioDiesel)
+                            .addComponent(jCheckBox1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioElectrico))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jCheckBox2)
+                                .addGap(3, 3, 3)
+                                .addComponent(jCheckBox3)))))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ButtonReset)
                     .addComponent(ButtonEnviar))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -461,7 +491,11 @@ public class VehiculosJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox CheckBoxTurismo;
     private javax.swing.JTextField TextFieldMarca;
     private javax.swing.JTextField TextFieldModelo;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup grupoCombustible;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox<String> jComboColor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
