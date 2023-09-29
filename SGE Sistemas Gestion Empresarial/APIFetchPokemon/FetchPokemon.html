@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="foto">
+    
+  </div>
+  
+</body>
+
+
+</html>
+
+<script>
+  let nombre = prompt("Introduce el nombre de un pokemon: ");
+  fetch('https://pokeapi.co/api/v2/pokemon/' + nombre)
+      .then(response => response.json())
+      .then(data => format(data));
+
+      function format(datos){
+        console.log("-Name:"); 
+        console.log("\t" , datos.name);
+        console.log("-Type:")
+        datos.types.forEach(type => {
+          console.log("\t" , type.type.name);
+          
+        });    
+        console.log("-Abilities:")
+        for (let i = 0; i < datos.abilities.length; i++) {
+          console.log("\t" , datos.abilities[i].ability.name);
+        }
+
+        console.log("-Moves:")
+        datos.moves.slice(0,5).forEach(move => {
+          console.log("\t" , move.move.name)
+        });
+
+        let urlFoto = datos.sprites.front_default;
+        let pokemonFoto = document.createElement("img");
+        //Setear fuente de la imagen (source)
+        pokemonFoto.setAttribute("src", urlFoto);
+        let divFoto = document.getElementById("foto");
+        divFoto.appendChild(pokemonFoto);
+        pokemonFoto.style.width = "25%";
+
+
+        
+      }
+</script>
