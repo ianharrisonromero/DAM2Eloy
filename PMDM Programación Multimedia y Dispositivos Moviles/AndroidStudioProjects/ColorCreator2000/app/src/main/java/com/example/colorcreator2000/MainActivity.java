@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         sbGreen = findViewById(R.id.sbGreen);
         sbBlue = findViewById(R.id.sbBlue);
         tvRedCounter = findViewById(R.id.tvRedCounter);
+        tvGreenCounter = findViewById(R.id.tvGreenCounter);
+        tvBlueCounter = findViewById(R.id.tvBlueCounter);
 
         sbRed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -36,6 +38,45 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // Not needed in this case
             }
+
+        });
+
+        sbGreen.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Update the tvGreenCounter with the current progress
+                tvGreenCounter.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Not needed in this case
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Not needed in this case
+            }
+
+        });
+
+        sbBlue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Update the tvBlueCounter with the current progress
+                tvBlueCounter.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Not needed in this case
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Not needed in this case
+            }
+
         });
     }
 }
