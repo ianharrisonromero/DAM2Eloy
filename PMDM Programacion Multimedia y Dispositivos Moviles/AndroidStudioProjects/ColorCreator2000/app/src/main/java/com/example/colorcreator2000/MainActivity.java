@@ -1,26 +1,47 @@
 package com.example.colorcreator2000;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     SeekBar sbRed, sbBlue, sbGreen;
-    TextView tvWriteName, tvGreenCounter, tvRedCounter, tvBlueCounter;
+    TextView tvWriteName, tvGreenCounter, tvRedCounter, tvBlueCounter, tvDisplay;
+    Button btColor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btColor = findViewById(R.id.btCreateColor);
         sbRed = findViewById(R.id.sbRed);
         sbGreen = findViewById(R.id.sbGreen);
         sbBlue = findViewById(R.id.sbBlue);
         tvRedCounter = findViewById(R.id.tvRedCounter);
         tvGreenCounter = findViewById(R.id.tvGreenCounter);
         tvBlueCounter = findViewById(R.id.tvBlueCounter);
+        tvDisplay = findViewById(R.id.tvDisplay);
+        tvWriteName = findViewById(R.id.tvWriteName);
+
+        btColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int r = sbRed.getProgress();
+                int g = sbGreen.getProgress();
+                int b = sbBlue.getProgress();
+
+                tvDisplay.setBackgroundColor(Color.rgb(r,g,b));
+            }
+        });
+
 
         sbRed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
