@@ -91,30 +91,30 @@
 
     <TextView
         android:id="@+id/tvBill"
-        android:layout_width="162dp"
-        android:layout_height="47dp"
+        android:layout_width="160dp"
+        android:layout_height="32dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:textAlignment="center"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/bt2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24000001" />
+        app:layout_constraintVertical_bias="0.26" />
 
     <TextView
         android:id="@+id/tvWithTip"
-        android:layout_width="220dp"
-        android:layout_height="47dp"
+        android:layout_width="217dp"
+        android:layout_height="34dp"
         android:background="@color/white"
         android:backgroundTint="#FFFFFF"
         android:textAlignment="center"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/btTip"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="@+id/tvServiceAlert"
         app:layout_constraintTop_toBottomOf="@+id/rgService"
         app:layout_constraintVertical_bias="0.62" />
