@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    let apiKey = prompt("Enter your api key for FileScore");
+    const url = 'https://livescore6.p.rapidapi.com/matches/v2/list-live?Category=soccer&Timezone=-7';
+
+function formatear(datos){
+
+    console.log("\n RESULTADOS EN DIRECTO DEL FUTBOL INTERNACIONAL\n\n");
+   
+    datos.Stages.forEach(element => {
+        let liga = element.Cnm ; 
+        let pais = element.Snm ;
+        let equipo1 = element.Events[0].T1[0].Nm ;
+        let marcadorEq1 = element.Events[0].Tr1 ;
+        let equipo2 = element.Events[0].T2[0].Nm ;
+        let marcadorEq2 = element.Events[0].Tr2 ;
+        console.log(liga);
+        console.log("\t" + pais);
+        console.log("\t\t" + equipo1 + "(" + marcadorEq1 + ")" );
+        console.log("\t\t" + equipo2+ "(" + marcadorEq2 + ")" );
+    })
+    
+    
+ 
+}
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': apiKey,
+		'X-RapidAPI-Host': 'livescore6.p.rapidapi.com'
+	}
+};
+
+try {
+	fetch(url, options)
+	.then(response => response.json())
+	.then(datos => formatear(datos));
+} catch (error) {
+	console.error(error);
+}
+</script>
