@@ -1,0 +1,17 @@
+Applications
+Library
+System
+Users
+Volumes
+bin
+dev
+etc
+home
+installer.failurerequests
+net
+opt
+private
+sbin
+tmp
+usr
+var
