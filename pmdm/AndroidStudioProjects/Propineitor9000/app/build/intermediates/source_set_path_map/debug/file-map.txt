@@ -22,10 +22,10 @@ com.example.propineitor9000.app-activity-1.6.0-20 /Users/iehr/.gradle/caches/tra
 com.example.propineitor9000.app-drawerlayout-1.1.1-21 /Users/iehr/.gradle/caches/transforms-3/e2d2d3c4dd62635dbea352ab171561e5/transformed/drawerlayout-1.1.1/res
 com.example.propineitor9000.app-transition-1.2.0-22 /Users/iehr/.gradle/caches/transforms-3/e44573450bfeaacfbe89d93e4952b042/transformed/transition-1.2.0/res
 com.example.propineitor9000.app-material-1.9.0-23 /Users/iehr/.gradle/caches/transforms-3/e5f321a248aa217236dda4759916dcd9/transformed/material-1.9.0/res
-com.example.propineitor9000.app-pngs-24 /Users/iehr/Desktop/DAM2Eloy/PMDM Programación Multimedia y Dispositivos Moviles/AndroidStudioProjects/Propineitor9000/app/build/generated/res/pngs/debug
-com.example.propineitor9000.app-resValues-25 /Users/iehr/Desktop/DAM2Eloy/PMDM Programación Multimedia y Dispositivos Moviles/AndroidStudioProjects/Propineitor9000/app/build/generated/res/resValues/debug
-com.example.propineitor9000.app-packageDebugResources-26 /Users/iehr/Desktop/DAM2Eloy/PMDM Programación Multimedia y Dispositivos Moviles/AndroidStudioProjects/Propineitor9000/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
-com.example.propineitor9000.app-packageDebugResources-27 /Users/iehr/Desktop/DAM2Eloy/PMDM Programación Multimedia y Dispositivos Moviles/AndroidStudioProjects/Propineitor9000/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
-com.example.propineitor9000.app-merged_res-28 /Users/iehr/Desktop/DAM2Eloy/PMDM Programación Multimedia y Dispositivos Moviles/AndroidStudioProjects/Propineitor9000/app/build/intermediates/merged_res/debug
-com.example.propineitor9000.app-debug-29 /Users/iehr/Desktop/DAM2Eloy/PMDM Programación Multimedia y Dispositivos Moviles/AndroidStudioProjects/Propineitor9000/app/src/debug/res
-com.example.propineitor9000.app-main-30 /Users/iehr/Desktop/DAM2Eloy/PMDM Programación Multimedia y Dispositivos Moviles/AndroidStudioProjects/Propineitor9000/app/src/main/res
+com.example.propineitor9000.app-pngs-24 /Users/iehr/Desktop/DAM2Eloy/pmdm/AndroidStudioProjects/Propineitor9000/app/build/generated/res/pngs/debug
+com.example.propineitor9000.app-resValues-25 /Users/iehr/Desktop/DAM2Eloy/pmdm/AndroidStudioProjects/Propineitor9000/app/build/generated/res/resValues/debug
+com.example.propineitor9000.app-packageDebugResources-26 /Users/iehr/Desktop/DAM2Eloy/pmdm/AndroidStudioProjects/Propineitor9000/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.example.propineitor9000.app-packageDebugResources-27 /Users/iehr/Desktop/DAM2Eloy/pmdm/AndroidStudioProjects/Propineitor9000/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.example.propineitor9000.app-merged_res-28 /Users/iehr/Desktop/DAM2Eloy/pmdm/AndroidStudioProjects/Propineitor9000/app/build/intermediates/merged_res/debug
+com.example.propineitor9000.app-debug-29 /Users/iehr/Desktop/DAM2Eloy/pmdm/AndroidStudioProjects/Propineitor9000/app/src/debug/res
+com.example.propineitor9000.app-main-30 /Users/iehr/Desktop/DAM2Eloy/pmdm/AndroidStudioProjects/Propineitor9000/app/src/main/res

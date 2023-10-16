@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvDisplay"
+        android:layout_width="279dp"
+        android:layout_height="91dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swWhiteText"
+        app:layout_constraintVertical_bias="0.098"
+        tools:text="Your color will apear here" />
+
+    <SeekBar
+        android:id="@+id/sbBlue"
+        android:layout_width="210dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sbGreen" />
+
+    <SeekBar
+        android:id="@+id/sbGreen"
+        android:layout_width="210dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sbRed" />
+
+    <TextView
+        android:id="@+id/tvWriteName"
+        android:layout_width="281dp"
+        android:layout_height="34dp"
+        android:text="Write the color name:"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="245dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWriteName" />
+
+    <SeekBar
+        android:id="@+id/sbRed"
+        android:layout_width="210dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:contextClickable="false"
+        android:max="255"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
+
+    <Switch
+        android:id="@+id/swWhiteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="White text "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sbBlue" />
+
+    <TextView
+        android:id="@+id/tvGreenCounter"
+        android:layout_width="24dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="12dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintStart_toEndOf="@+id/sbGreen"
+        app:layout_constraintTop_toBottomOf="@+id/tvRedCounter" />
+
+    <TextView
+        android:id="@+id/tvRedCounter"
+        android:layout_width="24dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toEndOf="@+id/sbRed"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
+
+    <TextView
+        android:id="@+id/tvBlueCounter"
+        android:layout_width="26dp"
+        android:layout_height="36dp"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintStart_toEndOf="@+id/sbBlue"
+        app:layout_constraintTop_toBottomOf="@+id/tvGreenCounter"
+        app:layout_constraintVertical_bias="0.038" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="61dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="40dp"
+        android:text="Red"
+        android:textColor="#D12D2D"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sbRed"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.268" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="60dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="40dp"
+        android:text="Blue"
+        android:textColor="#2B7DBF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sbBlue"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.381" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="57dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="40dp"
+        android:text="Green"
+        android:textColor="#2D9E32"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sbGreen"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.324" />
+
+    <Button
+        android:id="@+id/btCreateColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="#2196F3"
+        android:text="Create color"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toEndOf="@+id/swWhiteText"
+        app:layout_constraintTop_toBottomOf="@+id/sbBlue"
+        app:layout_constraintVertical_bias="0.468" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
