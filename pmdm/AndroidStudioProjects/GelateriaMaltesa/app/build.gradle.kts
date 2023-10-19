@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.basiccalculator2000"
+    namespace = "com.example.gelateriamaltesa"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.basiccalculator2000"
+        applicationId = "com.example.gelateriamaltesa"
         minSdk = 27
         targetSdk = 33
         versionCode = 1

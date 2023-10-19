@@ -10,7 +10,6 @@
         android:id="@+id/tvOperador1"
         android:layout_width="123dp"
         android:layout_height="20dp"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.157"
@@ -20,10 +19,23 @@
         tools:text="Operador 1:" />
 
     <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="313dp"
+        android:layout_height="58dp"
+        android:text="Basic Calculator 2000"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.041" />
+
+    <TextView
         android:id="@+id/tvOperador2"
         android:layout_width="123dp"
         android:layout_height="20dp"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.157"
@@ -36,7 +48,6 @@
         android:id="@+id/tvOperacion"
         android:layout_width="123dp"
         android:layout_height="20dp"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.055"
@@ -45,16 +56,44 @@
         app:layout_constraintVertical_bias="0.441"
         tools:text="Operación:" />
 
+    <TextView
+        android:id="@+id/tvAlertaRg"
+        android:layout_width="237dp"
+        android:layout_height="21dp"
+        android:text="Necesitas elegir una operación"
+        android:textAlignment="center"
+        android:textColor="#D33131"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575" />
+
+    <TextView
+        android:id="@+id/tvAlertaDivision"
+        android:layout_width="198dp"
+        android:layout_height="23dp"
+        android:text="No se puede dividir entre 0"
+        android:textAlignment="center"
+        android:textColor="#D33131"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.924"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.662" />
+
     <RadioGroup
         android:id="@+id/rgOperaciones"
         android:layout_width="392dp"
         android:layout_height="50dp"
         android:foregroundGravity="fill_horizontal"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="339dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/rbSuma"
@@ -84,5 +123,45 @@
             android:text="/" />
 
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/etOperador1"
+        android:layout_width="280dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
+
+    <EditText
+        android:id="@+id/etOperador2"
+        android:layout_width="280dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.769" />
+
+    <Button
+        android:id="@+id/btCalcular"
+        android:layout_width="160dp"
+        android:layout_height="46dp"
+        android:text="Calcular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.915" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
