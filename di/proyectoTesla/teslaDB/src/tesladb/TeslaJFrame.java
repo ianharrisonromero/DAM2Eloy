@@ -3,6 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package tesladb;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+
+
 
 /**
  *
@@ -26,6 +35,10 @@ public class TeslaJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabelModelo = new javax.swing.JLabel();
@@ -38,6 +51,37 @@ public class TeslaJFrame extends javax.swing.JFrame {
         jTextFieldAutonomia = new javax.swing.JTextField();
         jTextFieldPrecio = new javax.swing.JTextField();
         btCreate = new javax.swing.JButton();
+        btUpdate = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
+        btRead = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tDatabase = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +98,8 @@ public class TeslaJFrame extends javax.swing.JFrame {
 
         jLabelPrecio.setText("Precio");
 
+        jTextFieldId.setEditable(false);
+
         btCreate.setForeground(new java.awt.Color(0, 153, 51));
         btCreate.setText("Create");
         btCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -62,31 +108,86 @@ public class TeslaJFrame extends javax.swing.JFrame {
             }
         });
 
+        btUpdate.setText("Update");
+        btUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUpdateActionPerformed(evt);
+            }
+        });
+
+        btDelete.setForeground(new java.awt.Color(204, 0, 51));
+        btDelete.setText("Delete");
+
+        btRead.setText("Read DB");
+        btRead.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btReadActionPerformed(evt);
+            }
+        });
+
+        tDatabase.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Model", "Power", "Autonomy", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tDatabase.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tDatabaseMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tDatabase);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabelModelo)
-                            .addComponent(jLabelPotencia)
-                            .addComponent(jLabelAutonomía)
-                            .addComponent(jLabelPrecio))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldId)
-                            .addComponent(jTextFieldModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                            .addComponent(jTextFieldPotencia)
-                            .addComponent(jTextFieldAutonomia)
-                            .addComponent(jTextFieldPrecio))
-                        .addGap(38, 38, 38)
-                        .addComponent(btCreate)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabelModelo)
+                    .addComponent(jLabelPotencia)
+                    .addComponent(jLabelAutonomía)
+                    .addComponent(jLabelPrecio))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldId)
+                    .addComponent(jTextFieldModelo)
+                    .addComponent(jTextFieldPotencia)
+                    .addComponent(jTextFieldAutonomia)
+                    .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+                .addGap(58, 58, 58))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btRead, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(169, 169, 169))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,41 +198,233 @@ public class TeslaJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btCreate))
+                    .addComponent(btCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addComponent(btDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelModelo)
+                            .addComponent(jTextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelPotencia)
+                            .addComponent(jTextFieldPotencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelAutonomía)
+                            .addComponent(jTextFieldAutonomia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelPrecio)
+                            .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(12, 12, 12)
+                .addComponent(btRead, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelModelo)
-                    .addComponent(jTextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPotencia)
-                    .addComponent(jTextFieldPotencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAutonomía)
-                    .addComponent(jTextFieldAutonomia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPrecio)
-                    .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
-        try{
+        try {
             String url = "jdbc:mysql://localhost:3306/tesla";
-            try (Connection con = (Connection) DriverManager.getConnection(url,"root", "")){
-                
+            try ( Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
+
                 String sql = "INSERT INTO coches(modelo,potencia,autonomia,precio) VALUES (?,?,?,?)";
                 //3. EJECUTAMOS LA QUERY
-                PreparedStatement ps = con.preparedStatement(sql);
-                ps.setString
+                PreparedStatement ps = con.prepareStatement(sql);
+                //ps.setString
+                //Getting inputs
+                ps.setString(1, jTextFieldModelo.getText()); 
+                ps.setString(2, jTextFieldPotencia.getText()); 
+                ps.setString(3, jTextFieldAutonomia.getText()); 
+                ps.setString(4, jTextFieldPrecio.getText());
+
+                int filasInsertadas = ps.executeUpdate();
+                
+                con.close();
+                
+                if(filasInsertadas > 0){
+                    System.out.println("Fila insertada correctamente.");
+                    updateDatabase();
+                } else{
+                    System.out.println("No se pudo insertar la fila");
+                }
+            } catch(SQLException e) {
+                e.printStackTrace();
             }
+            
+            }catch (Exception e) {
+                e.printStackTrace();
+        
         }
+        //readDatabase();
     }//GEN-LAST:event_btCreateActionPerformed
+
+    private void updateDatabase(){
+        try {
+            String url = "jdbc:mysql://localhost:3306/tesla";
+            try (Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
+                String sql = "SELECT * FROM coches"; // Select all rows from the 'coches' table
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+
+                // Clear existing data in the table
+                DefaultTableModel model = (DefaultTableModel) tDatabase.getModel();
+                model.setRowCount(0);
+
+                // Populate the table with data from the database
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String modelo = rs.getString("modelo");
+                    String potencia = rs.getString("potencia");
+                    String autonomia = rs.getString("autonomia");
+                    String precio = rs.getString("precio");
+                    model.addRow(new Object[]{id, modelo, potencia, autonomia, precio});
+                }
+                updateDatabase();
+                        
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+    private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
+        try {
+            String url = "jdbc:mysql://localhost:3306/tesla";
+            try ( Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
+
+                int selectedRow = tDatabase.getSelectedRow();
+                Object[] objArray = {jTextFieldId, jTextFieldModelo, jTextFieldPotencia, jTextFieldAutonomia, jTextFieldPrecio};
+                
+                for(int i = 0 ; i<tDatabase.getColumnCount() ; i++ ){
+                    JTextField field;
+                    field = (JTextField) objArray[i];
+                    field.setText(tDatabase.getValueAt(selectedRow, i).toString());
+                }
+                
+                
+                //Getting inputs
+                
+//                PreparedStatement ps = con.prepareStatement(sql);
+//
+//                ps.setString(1, jTextFieldModelo.getText()); 
+//                ps.setString(2, jTextFieldPotencia.getText()); 
+//                ps.setString(3, jTextFieldAutonomia.getText()); 
+//                ps.setString(4, jTextFieldPrecio.getText());
+//                                
+//                String sql = "UPDATE coches "
+//                        + "    SET modelo = ?,potencia = ?,autonomia = ?,precio = ?"
+//                        + "    WHERE id = ";
+//                //3. EJECUTAMOS LA QUERY
+//                //ps.setString
+//
+//                int filasInsertadas = ps.executeUpdate();
+//                
+//                con.close();
+//                
+//                if(filasInsertadas > 0){
+//                    System.out.println("Fila actualizada correctamente.");
+//                } else{
+//                    System.out.println("No se pudo insertar la fila");
+//                }
+            } catch(SQLException e) {
+                e.printStackTrace();
+            }
+            
+            }catch (Exception e) {
+                e.printStackTrace();
+        
+        }
+    }//GEN-LAST:event_btUpdateActionPerformed
+
+    private void btReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReadActionPerformed
+        try {
+            String url = "jdbc:mysql://localhost:3306/tesla";
+            try (Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
+                String sql = "SELECT * FROM coches"; // Select all rows from the 'coches' table
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+
+                // Clear existing data in the table
+                DefaultTableModel model = (DefaultTableModel) tDatabase.getModel();
+                model.setRowCount(0);
+
+                // Populate the table with data from the database
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String modelo = rs.getString("modelo");
+                    String potencia = rs.getString("potencia");
+                    String autonomia = rs.getString("autonomia");
+                    String precio = rs.getString("precio");
+                    model.addRow(new Object[]{id, modelo, potencia, autonomia, precio});
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btReadActionPerformed
+
+    private void tDatabaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tDatabaseMouseClicked
+        try {
+            String url = "jdbc:mysql://localhost:3306/tesla";
+            try ( Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
+
+                int selectedRow = tDatabase.getSelectedRow();
+                Object[] objArray = {jTextFieldId, jTextFieldModelo, jTextFieldPotencia, jTextFieldAutonomia, jTextFieldPrecio};
+                
+                for(int i = 0 ; i<tDatabase.getColumnCount() ; i++ ){
+                    JTextField field;
+                    field = (JTextField) objArray[i];
+                    field.setText(tDatabase.getValueAt(selectedRow, i).toString());
+                }
+                
+                
+                //Getting inputs
+                
+//                PreparedStatement ps = con.prepareStatement(sql);
+//
+//                ps.setString(1, jTextFieldModelo.getText()); 
+//                ps.setString(2, jTextFieldPotencia.getText()); 
+//                ps.setString(3, jTextFieldAutonomia.getText()); 
+//                ps.setString(4, jTextFieldPrecio.getText());
+//                                
+//                String sql = "UPDATE coches "
+//                        + "    SET modelo = ?,potencia = ?,autonomia = ?,precio = ?"
+//                        + "    WHERE id = ";
+//                //3. EJECUTAMOS LA QUERY
+//                //ps.setString
+//
+//                int filasInsertadas = ps.executeUpdate();
+//                
+//                con.close();
+//                
+//                if(filasInsertadas > 0){
+//                    System.out.println("Fila actualizada correctamente.");
+//                } else{
+//                    System.out.println("No se pudo insertar la fila");
+//                }
+            } catch(SQLException e) {
+                e.printStackTrace();
+            }
+            
+            }catch (Exception e) {
+                e.printStackTrace();
+        
+        }
+    }//GEN-LAST:event_tDatabaseMouseClicked
 
     /**
      * @param args the command line arguments
@@ -170,16 +463,25 @@ public class TeslaJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCreate;
+    private javax.swing.JButton btDelete;
+    private javax.swing.JButton btRead;
+    private javax.swing.JButton btUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelAutonomía;
     private javax.swing.JLabel jLabelModelo;
     private javax.swing.JLabel jLabelPotencia;
     private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextFieldAutonomia;
     private javax.swing.JTextField jTextFieldId;
     private javax.swing.JTextField jTextFieldModelo;
     private javax.swing.JTextField jTextFieldPotencia;
     private javax.swing.JTextField jTextFieldPrecio;
+    private javax.swing.JTable tDatabase;
     // End of variables declaration//GEN-END:variables
 }
