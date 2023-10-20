@@ -24,6 +24,8 @@ public class TeslaJFrame extends javax.swing.JFrame {
      */
     public TeslaJFrame() {
         initComponents();
+        
+        
     }
 
     /**
@@ -117,6 +119,11 @@ public class TeslaJFrame extends javax.swing.JFrame {
 
         btDelete.setForeground(new java.awt.Color(204, 0, 51));
         btDelete.setText("Delete");
+        btDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteActionPerformed(evt);
+            }
+        });
 
         btRead.setText("Read DB");
         btRead.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +132,8 @@ public class TeslaJFrame extends javax.swing.JFrame {
             }
         });
 
+        tDatabase.setBackground(new java.awt.Color(204, 204, 255));
+        tDatabase.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255)));
         tDatabase.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -139,9 +148,16 @@ public class TeslaJFrame extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tDatabase.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -253,7 +269,7 @@ public class TeslaJFrame extends javax.swing.JFrame {
                 
                 if(filasInsertadas > 0){
                     System.out.println("Fila insertada correctamente.");
-                    updateDatabase();
+                    readDatabase();
                 } else{
                     System.out.println("No se pudo insertar la fila");
                 }
@@ -268,7 +284,7 @@ public class TeslaJFrame extends javax.swing.JFrame {
         //readDatabase();
     }//GEN-LAST:event_btCreateActionPerformed
 
-    private void updateDatabase(){
+    private void readDatabase(){
         try {
             String url = "jdbc:mysql://localhost:3306/tesla";
             try (Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
@@ -289,7 +305,7 @@ public class TeslaJFrame extends javax.swing.JFrame {
                     String precio = rs.getString("precio");
                     model.addRow(new Object[]{id, modelo, potencia, autonomia, precio});
                 }
-                updateDatabase();
+                readDatabase();
                         
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -350,28 +366,7 @@ public class TeslaJFrame extends javax.swing.JFrame {
 
     private void btReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReadActionPerformed
         try {
-            String url = "jdbc:mysql://localhost:3306/tesla";
-            try (Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
-                String sql = "SELECT * FROM coches"; // Select all rows from the 'coches' table
-                PreparedStatement ps = con.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery();
-
-                // Clear existing data in the table
-                DefaultTableModel model = (DefaultTableModel) tDatabase.getModel();
-                model.setRowCount(0);
-
-                // Populate the table with data from the database
-                while (rs.next()) {
-                    int id = rs.getInt("id");
-                    String modelo = rs.getString("modelo");
-                    String potencia = rs.getString("potencia");
-                    String autonomia = rs.getString("autonomia");
-                    String precio = rs.getString("precio");
-                    model.addRow(new Object[]{id, modelo, potencia, autonomia, precio});
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            readDatabase();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -426,6 +421,43 @@ public class TeslaJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tDatabaseMouseClicked
 
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+        try {
+            String url = "jdbc:mysql://localhost:3306/tesla";
+            try ( Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
+
+                String sql = "DELETE FROM coches WHERE id = ?";
+                //3. EJECUTAMOS LA QUERY
+                PreparedStatement ps = con.prepareStatement(sql);
+                //ps.setString
+                //Getting inputs
+                int selectedRow = tDatabase.getSelectedRow();
+                int idDelete = (int)tDatabase.getValueAt(selectedRow, 0);
+                ps.setInt(1, idDelete);
+                
+                int filasInsertadas = ps.executeUpdate();
+
+                con.close();
+                
+                if(filasInsertadas > 0){
+                    System.out.println("Fila borrada correctamente.");
+                    readDatabase();
+                } else{
+                    System.out.println("No se pudo insertar la fila");
+                    readDatabase();
+
+                }
+            } catch(SQLException e) {
+                e.printStackTrace();
+            }
+            
+            }catch (Exception e) {
+                e.printStackTrace();
+        
+        }
+        //readDatabase();
+    }//GEN-LAST:event_btDeleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -460,6 +492,8 @@ public class TeslaJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCreate;
@@ -484,4 +518,5 @@ public class TeslaJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPrecio;
     private javax.swing.JTable tDatabase;
     // End of variables declaration//GEN-END:variables
+    
 }
