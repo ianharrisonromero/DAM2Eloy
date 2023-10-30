@@ -58,6 +58,7 @@ public class TeslaJFrame extends javax.swing.JFrame {
         btRead = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tDatabase = new javax.swing.JTable();
+        btCSV = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,6 +168,13 @@ public class TeslaJFrame extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tDatabase);
 
+        btCSV.setText("Import CSV");
+        btCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCSVActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,9 +209,11 @@ public class TeslaJFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
+                .addComponent(btCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btRead, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(169, 169, 169))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +249,9 @@ public class TeslaJFrame extends javax.swing.JFrame {
                             .addComponent(jLabelPrecio)
                             .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(12, 12, 12)
-                .addComponent(btRead, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btRead, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btCSV, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -253,9 +265,9 @@ public class TeslaJFrame extends javax.swing.JFrame {
             String url = "jdbc:mysql://localhost:3306/tesla";
             try ( Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
 
-                String sql = "INSERT INTO coches(modelo,potencia,autonomia,precio) VALUES (?,?,?,?)";
+                String query = "INSERT INTO coches(modelo,potencia,autonomia,precio) VALUES (?,?,?,?)";
                 //3. EJECUTAMOS LA QUERY
-                PreparedStatement ps = con.prepareStatement(sql);
+                PreparedStatement ps = con.prepareStatement(query);
                 //ps.setString
                 //Getting inputs
                 ps.setString(1, jTextFieldModelo.getText()); 
@@ -288,15 +300,15 @@ public class TeslaJFrame extends javax.swing.JFrame {
         try {
             String url = "jdbc:mysql://localhost:3306/tesla";
             try (Connection con = (Connection) DriverManager.getConnection(url, "root", "")) {
-                String sql = "SELECT * FROM coches"; // Select all rows from the 'coches' table
+                String sql = "SELECT * FROM coches";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
 
-                // Clear existing data in the table
+                //CLEAR
                 DefaultTableModel model = (DefaultTableModel) tDatabase.getModel();
                 model.setRowCount(0);
 
-                // Populate the table with data from the database
+                // FILL TABLE
                 while (rs.next()) {
                     int id = rs.getInt("id");
                     String modelo = rs.getString("modelo");
@@ -429,17 +441,16 @@ public class TeslaJFrame extends javax.swing.JFrame {
                 String sql = "DELETE FROM coches WHERE id = ?";
                 //3. EJECUTAMOS LA QUERY
                 PreparedStatement ps = con.prepareStatement(sql);
-                //ps.setString
-                //Getting inputs
+                //Getting input
                 int selectedRow = tDatabase.getSelectedRow();
                 int idDelete = (int)tDatabase.getValueAt(selectedRow, 0);
                 ps.setInt(1, idDelete);
                 
-                int filasInsertadas = ps.executeUpdate();
+                int filasAfectadas = ps.executeUpdate();
 
-                con.close();
+                con.close();                
                 
-                if(filasInsertadas > 0){
+                if(filasAfectadas > 0){
                     System.out.println("Fila borrada correctamente.");
                     readDatabase();
                 } else{
@@ -447,6 +458,7 @@ public class TeslaJFrame extends javax.swing.JFrame {
                     readDatabase();
 
                 }
+          
             } catch(SQLException e) {
                 e.printStackTrace();
             }
@@ -457,6 +469,10 @@ public class TeslaJFrame extends javax.swing.JFrame {
         }
         //readDatabase();
     }//GEN-LAST:event_btDeleteActionPerformed
+
+    private void btCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCSVActionPerformed
 
     /**
      * @param args the command line arguments
@@ -496,6 +512,7 @@ public class TeslaJFrame extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCSV;
     private javax.swing.JButton btCreate;
     private javax.swing.JButton btDelete;
     private javax.swing.JButton btRead;

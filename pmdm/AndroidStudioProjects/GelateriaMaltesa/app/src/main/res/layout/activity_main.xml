@@ -62,12 +62,60 @@
 
     <Spinner
         android:id="@+id/spType"
-        android:layout_width="295dp"
-        android:layout_height="31dp"
+        android:layout_width="329dp"
+        android:layout_height="53dp"
         android:background="#D3D3D3"
-        android:entries="Cucurucho, tarrina"
         android:spinnerMode="dialog"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="370dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.573"
+        android:entries="@array/spType"
+    />
+
+
+    <EditText
+        android:id="@+id/etCBalls"
+        android:layout_width="127dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176" />
+
+    <EditText
+        android:id="@+id/etVBalls"
+        android:layout_width="127dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
+
+    <EditText
+        android:id="@+id/etSBalls"
+        android:layout_width="127dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.443" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,7 +36,7 @@ BEGIN
             v_employee_id,
             v_salary,
             v_last_name,
-            'salary changes'
+            'Cambios de salario realizados.'
         );
 
     END LOOP;
@@ -69,7 +69,7 @@ BEGIN
         customer_id = codigo;
 
     IF existe != 1 THEN
-        dbms_output.put_line('There is no customer with that ID on the database');
+        dbms_output.put_line('no hay cliente con ese ID en la base de datos.');
     ELSE
         SELECT
             customer_id,
@@ -201,7 +201,7 @@ INSERT INTO students VALUES (
 
 INSERT INTO students VALUES (
     'ROSSO',
-    'IES SANTA TERESA',
+    'IES SAN ISIDRO',
     sysdate + 180
 );
 
@@ -372,10 +372,10 @@ BEGIN
         p_total
     );
 
-    dbms_output.put_line('The order has been placed.');
+    dbms_output.put_line('Pedido realizado correctamente    .');
 EXCEPTION
     WHEN OTHERS THEN
-        dbms_output.put_line('There was an error while placing the order: ' || sqlerrm);
+        dbms_output.put_line('Hubo un error con el pedido: ' || sqlerrm);
 END;
 /
 
@@ -460,7 +460,7 @@ FROM
 CREATE OR REPLACE TRIGGER funciones_trigger AFTER
     UPDATE ON funciones
 BEGIN
-    dbms_output.put_line('Se ha hecho un cambio en la tabla FUNCIONES');
+    dbms_output.put_line('Se realizó el cambio en "Funciones"');
 END;
 /
 
@@ -479,11 +479,11 @@ DECLARE
     v_mensaje VARCHAR2(100);
 BEGIN
     IF inserting THEN
-        v_mensaje := 'Detalle dado de alta';
+        v_mensaje := 'Detalle guardado';
     ELSIF updating THEN
-        v_mensaje := 'Detalle modificado';
+        v_mensaje := 'Detalle cambiado';
     ELSIF deleting THEN
-        v_mensaje := 'Detalle borrado';
+        v_mensaje := 'Detalle eliminado';
     END IF;
 
     INSERT INTO cambios_detalles (
@@ -563,20 +563,20 @@ BEGIN
     IF existe = 1 THEN
         INSERT INTO temp VALUES (
             to_number(cod_cliente),
-            'EXISTE'
+            'El cliente existe :)'
         );
 
     ELSE
         INSERT INTO temp VALUES (
             to_number(cod_cliente),
-            'NO EXISTE'
+            'El cliente no existe :('
         );
 
     END IF;
 
 EXCEPTION
     WHEN OTHERS THEN
-        dbms_output.put_line('Error: ' || sqlerrm);
+        dbms_output.put_line('Se ha producido un error: ' || sqlerrm);
 END;
 /
 
@@ -614,9 +614,9 @@ BEGIN
         customer_id = codigo;
 
     IF existe_cliente != 1 THEN
-        raise_application_error(-200001, 'No existe ese cliente');
+        raise_application_error(-200001, 'No existe el cliente');
     ELSIF existe_pedido < 1 THEN
-        raise_application_error(-200002, 'No existen pedidos de ese cliente');
+        raise_application_error(-200002, 'No existen pedidos del cliente');
     ELSE
         SELECT
             customer_id,
@@ -664,7 +664,7 @@ CREATE OR REPLACE TRIGGER borrado_empleado AFTER
 BEGIN
     dbms_output.put_line('Empleado '
                          || :old.last_name
-                         || ' con n�mero '
+                         || ' con numero '
                          || :old.employee_id
                          || ' eliminado');
 END;
@@ -870,7 +870,7 @@ BEGIN
         filas_afectadas := filas_afectadas + 1;
     END LOOP;
 
-    dbms_output.put_line('N�mero de filas afectadas: ' || filas_afectadas);
+    dbms_output.put_line('Numero de filas afectadas: ' || filas_afectadas);
 END;
 /
 
