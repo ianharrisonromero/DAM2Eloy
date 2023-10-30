@@ -55,7 +55,7 @@ int main(int argc, char const *argv[]){
       }
     }
 
-    searchBetween(lettersString[2 * i], lettersString[2 * i + 1]); 
+    //searchBetween(lettersString[2 * i], lettersString[2 * i + 1]); 
     
     //esperar a los hijos
     if (id != 0) {
