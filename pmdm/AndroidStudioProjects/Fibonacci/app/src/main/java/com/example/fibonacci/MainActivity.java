@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         Intent data = result.getData();
                         tvNum1.setText(tvNum2.getText().toString());
-                        tvNum2.setText(data.getStringExtra(NextFiboActivity.N_SUM).toString());
+                        String nSum = data.getStringExtra(NextFiboActivity.N_SUM);
+                        tvNum2.setText(nSum);
+
                     }else{
                         tvTitle.setText("Cant reach code");
                         }
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         btNext.setOnClickListener(view -> {
 
-            Intent intent = new Intent();
+            Intent intent = new Intent(this, NextFiboActivity.class);
             intent.putExtra(N1, tvNum1.getText().toString());
             intent.putExtra(N2, tvNum2.getText().toString());
             launcher.launch(intent);
