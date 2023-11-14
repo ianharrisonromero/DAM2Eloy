@@ -42,8 +42,8 @@ FUNCIONES DE PROPIEDAD:
 .getText();
 if (jRadioButton.isSelected())    
 JComboColor.getSelectedItem()
-JOptionPane.showInputDialog("Cuidado pescao");
-
+String text = JOptionPane.showInputDialog();
+JOptionPane.showMessageDialog("Cuidao pescao");
     
     
     

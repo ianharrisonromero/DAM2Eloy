@@ -1,18 +1,47 @@
 {
+  "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++: clang Compilar y depurar el archivo activo",
-      "type": "cppdbg",
+      "type": "java",
+      "name": "MainDate",
       "request": "launch",
-      "program": "${fileDirname}/${fileBasenameNoExtension}",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "lldb",
-      "preLaunchTask": "C/C++: clang compilar archivo activo"
+      "mainClass": "psp.EntrenamientoJava.Date.MainDate",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "date5sec",
+      "request": "launch",
+      "mainClass": "date5sec",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "ensayoExamen",
+      "request": "launch",
+      "mainClass": "ensayoExamen",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "TheRun",
+      "request": "launch",
+      "mainClass": "TheRun"
+    },
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
     }
-  ],
-  "version": "2.0.0"
+  ]
 }
