@@ -3,10 +3,45 @@
   "configurations": [
     {
       "type": "java",
+      "name": "SynchronizedCounter",
+      "request": "launch",
+      "mainClass": "SynchronizedCounter"
+    },
+    {
+      "type": "java",
+      "name": "Elefante2",
+      "request": "launch",
+      "mainClass": "Elefante2",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "CancionesInfantiles",
+      "request": "launch",
+      "mainClass": "CancionesInfantiles",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "MainDate2",
+      "request": "launch",
+      "mainClass": "MainDate2",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "Simulacro",
+      "request": "launch",
+      "mainClass": "Simulacro",
+      "projectName": ""
+    },
+    {
+      "type": "java",
       "name": "MainDate",
       "request": "launch",
       "mainClass": "psp.EntrenamientoJava.Date.MainDate",
-      "projectName": ""
+      "projectName": "",
+      "preLaunchTask": "javac MainDate"
     },
     {
       "type": "java",
@@ -42,6 +77,17 @@
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal"
+    },
+    {
+      "name": "Java Debug",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "${file}",
+      "projectName": "Simulacro",
+      "args": ""
     }
   ]
 }
+
+  
+

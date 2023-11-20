@@ -48,18 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Numbers tapped to bill display
-        OnClickListener btNumberListener = new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Button btClicked = (Button) view;
-                String btText = btClicked.getText().toString();
-                String currentText = tvBill.getText().toString();
-                if (currentText.length() < MAX_DISPLAY_LENGHT) {
-                    String newText = currentText + btText;
-                    tvBill.setText(newText);
-                } else {
-                    tvNumAlert.setVisibility(View.VISIBLE);
-                }
+        OnClickListener btNumberListener = (view) -> {
+            Button btClicked = (Button) view;
+            String btText = btClicked.getText().toString();
+            String currentText = tvBill.getText().toString();
+            if (currentText.length() < MAX_DISPLAY_LENGHT) {
+                String newText = currentText + btText;
+                tvBill.setText(newText);
+            } else {
+                tvNumAlert.setVisibility(View.VISIBLE);
             }
         };
 

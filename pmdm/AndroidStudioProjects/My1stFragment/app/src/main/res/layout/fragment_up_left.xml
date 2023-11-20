@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayoutUp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentUpLeft">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tvColor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tvContador"
+        android:layout_width="366dp"
+        android:layout_height="318dp"
+        android:layout_gravity="bottom|clip_horizontal|center"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+</FrameLayout>

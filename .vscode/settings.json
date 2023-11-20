@@ -1,4 +1,10 @@
 {
   "java.configuration.updateBuildConfiguration": "interactive",
-  "C_Cpp.errorSquiggles": "disabled"
+  "C_Cpp.errorSquiggles": "disabled",
+  "java.home": "/Library/Java/JavaVirtualMachines/jdk-16.0.2.jdk/Contents/Home",
+  "cmake.configureOnOpen": true,
+  "java.project.sourcePaths": [
+    "psp/ut02/sinchonized"
+  ]
+
 }

@@ -1,4 +1,7 @@
-package psp.EntrenamientoJava.Date;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class MainDate {
   public static void main(String[] args) {
 
@@ -15,4 +18,7 @@ public class MainDate {
 
 
   }
+
+  
 }
+

@@ -1,6 +1,22 @@
 {
   "tasks": [
     {
+      "label": "javac",
+      "type": "shell",
+      "command": "javac",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/psp/EntrenamientoJava/Date"
+      },
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": ["$javaCompile"]
+    },
+    {
       "type": "cppbuild",
       "label": "C/C++: clang compilar archivo activo",
       "command": "/usr/bin/clang",
@@ -15,9 +31,7 @@
       "options": {
         "cwd": "${fileDirname}"
       },
-      "problemMatcher": [
-        "$gcc"
-      ],
+      "problemMatcher": ["$gcc"],
       "group": {
         "kind": "build",
         "isDefault": true

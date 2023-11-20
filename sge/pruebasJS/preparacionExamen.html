@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preparacion para examen</title>
+  </head>
+  <body>
+    <input type = "radio" name="coches" value="Toyota" > Toyota </input>
+    <input type = "radio" name="coches" value="Renault" /> Renault 
+    <input type = "radio" name="coches" value="Tesla"> Tesla </input> <br>
+    <input type="button" value="boton1" id="boton1"/>
+    <input type="button" value="JSON" id="btnJson"/>
+    <ul id = "ul1" />
+    <div style="font-size: large; color: darkmagenta;"> </div>
+    <div> </div>
+    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste reiciendis id animi accusamus a. Nulla id optio voluptate pariatur sed quibusdam excepturi minus ut vel, incidunt, sunt similique et numquam!</p>
+    <a href="google.es"> Google.es </a>
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates repudiandae hic, veritatis inventore quaerat accusamus maiores officiis omnis voluptatum, voluptatem nesciunt. Eligendi rerum deleniti quaerat obcaecati inventore provident vel pariatur!</p>
+    <a href="reddit.com"> Reddit </a>
+    <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, excepturi magni? Eos incidunt quia praesentium, officia maiores corporis non molestiae labore corrupti illum architecto modi, suscipit doloremque. Laboriosam, sed minima.</p>
+    <a href="elpais.es"> ElPais </a>
+    <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident eius eos adipisci cum aliquam. Labore architecto nam quos expedita esse a fugiat quas reprehenderit voluptatum ipsam consequatur, optio, iusto corrupti!</p>
+    <a href="amazon.com"> Amazon </a>
+</body>
+
+  <script>
+    let objetoCoches = document.getElementsByName("coches");
+  
+    console.log("Comprobación print");
+
+    boton1 = document.getElementById("boton1");
+
+    botonJson = document.getElementById("btnJson");
+
+    let lista = document.getElementById("ul1");
+
+    let clienteJson = { "Cliente":1233, "Nombre":"Pedro Ramirez", "Dirección":"Calle de la piruleta 14", "ultimo_pedido": { "id_pedido": 2, "Productos": [ { "id_producto":77, "Nombre":"Impresora Láser", "Fabricante":"Canon", "Cantidad":3, "precio_uni":80 }, { "id_producto":22, "Nombre":"Ratón Gamer", "Fabricante":"Logitech", "Cantidad":2, "precio_uni":55 } ] } };
+
+
+      boton1.addEventListener("click", () => {
+      let input = prompt("Escribe aquí ");
+      let objetoLista = document.createElement("li");
+      objetoLista.innerHTML = input;
+      lista.append(objetoLista);
+    }); 
+
+    botonJson.addEventListener("click", () => {
+        let parrafoDivJson = "El cliente " + clienteJson.Nombre + ", que vive en la calle " + clienteJson.Dirección + " ha comprado:<br>-> "
+                                + clienteJson.ultimo_pedido.Productos[0].Cantidad + " ud. de " + clienteJson.ultimo_pedido.Productos[0].Nombre + "<br>->"
+                                + clienteJson.ultimo_pedido.Productos[1].Cantidad + " ud. de " + clienteJson.ultimo_pedido.Productos[1].Nombre 
+                                + "<br> TOTAL :" + ((clienteJson.ultimo_pedido.Productos[0].precio_uni * clienteJson.ultimo_pedido.Productos[0].Cantidad) +
+                                                    (clienteJson.ultimo_pedido.Productos[1].precio_uni * clienteJson.ultimo_pedido.Productos[1].Cantidad))
+                                                    + " €"
+                                ;
+
+        document.getElementsByTagName("div")[1].innerHTML = parrafoDivJson;
+    });
+
+   /*  boton1.addEventListener("click", () =>{
+        
+        let numParrafos = document.getElementsByTagName("p").length;
+        console.log("nº párrafos : " + numParrafos);
+        console.log("nº links : " + document.getElementsByTagName("a").length);
+        let objetoDiv = document.getElementsByTagName("div")[0];
+        let lineaDiv = objetoDiv.innerHTML;
+        lineaDiv = "El cuarto enlace es : " + document.getElementsByTagName("a")[3].getAttribute("href");
+        objetoDiv.innerHTML = lineaDiv;
+
+    }); */
+
+    boton1.addEventListener("mouseover", () =>{
+      boton1.style.backgroundColor = "BLACK";
+      boton1.style.color = "WHITE";
+    });
+
+    boton1.addEventListener("mouseout", () =>{
+      boton1.style.backgroundColor = "WHITE";
+      boton1.style.color = "BLACK";
+    });
+
+
+    boton1.addEventListener("keydown", (event) => {
+     
+    const keyCode = event.keyCode;
+
+    console.log("Key pressed:", keyCode);
+    }); 
+
+
+</script>
+</html>
