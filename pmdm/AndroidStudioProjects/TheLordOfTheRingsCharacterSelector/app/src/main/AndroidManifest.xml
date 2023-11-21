@@ -13,6 +13,12 @@
         android:theme="@style/Theme.TheLordOfTheRingsCharacterSelector"
         tools:targetApi="31">
         <activity
+            android:name=".weaponSelectorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CharacterSelectorActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -5,34 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40ea7e58-46d3-4254-adfc-06f9d114afaa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.vscode/tasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.vscode/tasks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../ad/1erTrimestre/ejercicios1/HarrisonRomero_IanEloy_TEMA2_PRACTICA2.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../di/ProyectoVehiculos/target/classes/com/mycompany/proyectovehiculos/VehiculosJFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/propineitor9000/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/propineitor9000/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/Date5sec.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/DateLambda.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/DateLambda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/DateRunnable.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/DateRunnable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/DateThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/DateThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/MainDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/MainDate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/MainDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../psp/EntrenamientoJava/Date/MainDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../psp/ut02/elefante/ElefanteThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../psp/ut02/elefante/ElefanteThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/src/main/java/com/example/thelordoftheringscharacterselector/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/src/main/java/com/example/thelordoftheringscharacterselector/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

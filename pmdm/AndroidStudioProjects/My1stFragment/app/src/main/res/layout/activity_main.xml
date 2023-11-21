@@ -9,12 +9,13 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="com.example.my1stfragment.FragmentUpLeft"
-        android:layout_width="411dp"
-        android:layout_height="729dp"
+        android:layout_width="397dp"
+        android:layout_height="787dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.555" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
