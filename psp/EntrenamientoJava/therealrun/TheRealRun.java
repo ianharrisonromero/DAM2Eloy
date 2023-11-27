@@ -36,11 +36,7 @@ public class TheRealRun extends Thread {
             timeStart = System.currentTimeMillis();
             while (kmCovered < TOTAL_KM) {
                 kmCovered += (int) (Math.random() * KM_RANGE);
-                try {
-                    Thread.sleep(WAIT_TIME);
-
-                } catch (Exception e) {
-                }
+                Thread.sleep(WAIT_TIME);
             }
 
             timeEnd = System.currentTimeMillis();
@@ -54,9 +50,7 @@ public class TheRealRun extends Thread {
 
             System.out.printf("Runner number %d has finished with time: %d mS\n", number, runnerTime);
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        } catch (InterruptedException e) {        }
     }
 
     @Override
@@ -64,5 +58,4 @@ public class TheRealRun extends Thread {
         // TODO Auto-generated method stub
         return "num: " + number + " / km : " + kmCovered;
     }
-
 }
