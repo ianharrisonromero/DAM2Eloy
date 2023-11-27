@@ -13,7 +13,7 @@
         android:theme="@style/Theme.TheLordOfTheRingsCharacterSelector"
         tools:targetApi="31">
         <activity
-            android:name=".weaponSelectorActivity"
+            android:name=".WeaponSelectorActivity"
             android:exported="false" />
         <activity
             android:name=".CharacterSelectorActivity"

@@ -5,6 +5,10 @@
   "cmake.configureOnOpen": true,
   "java.project.sourcePaths": [
     "psp/ut02/sinchonized"
-  ]
+  ],
+  "files.associations": {
+    "*.java": "java",
+    "6.C": "cpp"
+  }
 
 }

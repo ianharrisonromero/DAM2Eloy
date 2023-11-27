@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>
-        La Rial Preparation *JS*
-    </h1>
+  </head>
+  <body>
+    <h1>La Rial Preparation *JS*</h1>
 
-    <input type = "button" value="Cambiar color texto"> 
-    <br><br> 
-    <input type="button" value="Cambiar color fondo">
-<br><br><br>
-    <input type="text" value="Introduce día">
-    <input type="button" value="Añadir día" name="addP">
-brrrrrr
-    <input type="button" value="Quitar dia" id="delP">
+    <input type="button" value="Cambiar color texto" />
+    <br /><br />
+    <input type="button" value="Cambiar color fondo" />
+    <br /><br /><br />
+    <input type="text" value="Introduce día" />
+    <input type="button" value="Añadir día" name="addP" />
+    brrrrrr
+    <input type="button" value="Quitar dia" id="delP" />
 
     <p class="italicParagraphsClass">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis asperiores dolorem doloremque numquam, obcaecati illum fugit eaque illo. Dignissimos ipsum earum numquam reprehenderit animi odio soluta, officiis molestias ipsam in.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+      asperiores dolorem doloremque numquam, obcaecati illum fugit eaque illo.
+      Dignissimos ipsum earum numquam reprehenderit animi odio soluta, officiis
+      molestias ipsam in.
     </p>
     <p class="boldParagraphsClass">
-        Reprehenderit voluptatum fugiat accusantium cum similique, voluptatibus doloribus suscipit temporibus officia. Nobis iste cumque tenetur, ex hic vitae placeat voluptatum eum ipsa?
+      Reprehenderit voluptatum fugiat accusantium cum similique, voluptatibus
+      doloribus suscipit temporibus officia. Nobis iste cumque tenetur, ex hic
+      vitae placeat voluptatum eum ipsa?
     </p>
     <p class="italicParagraphsClass">
-       Explicabo, enim praesentium? Nostrum officia a dolorem, asperiores distinctio assumenda neque laboriosam obcaecati ab vitae sit eveniet animi sapiente quod, commodi in?
+      Explicabo, enim praesentium? Nostrum officia a dolorem, asperiores
+      distinctio assumenda neque laboriosam obcaecati ab vitae sit eveniet animi
+      sapiente quod, commodi in?
     </p>
     <p class="boldParagraphsClass">
-        Eveniet ipsum quisquam commodi odio cumque doloribus iste, provident placeat voluptas quo odit fuga atque labore earum qui quasi iusto quas non.
+      Eveniet ipsum quisquam commodi odio cumque doloribus iste, provident
+      placeat voluptas quo odit fuga atque labore earum qui quasi iusto quas
+      non.
     </p>
-    <div name="myDivision">
+    <div name="myDivision"></div>
+  </body>
 
-    </div>
-</body>
-
-<script>
+  <script>
     let btnColorTexto = document.getElementsByTagName("button");
-    btnColorTexto.addEventListener("click" , () => {
-        let paragraphs = document.getElementsByTagName("p");
 
-        // Check if there is at least one paragraph before attempting to change color
-        if (paragraphs.length > 0) {
-            paragraphs[0].style.color = "blue"; // Change the color to blue (or any other color)
+    function changeTextColor(){
+        
     }
-    })
-    
-</script>
 
+    btnColorTexto.addEventListener("click", () => {
+      let paragraphs = document.getElementsByTagName("p");
+
+      if (paragraphs.length > 0) {
+        paragraphs[0].style.color = "blue";
+      }
+    });
+  </script>
 </html>
