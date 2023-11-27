@@ -30,21 +30,18 @@ public class MainTheRealRun {
             System.out.println("1");
             Thread.sleep(300);
             System.out.println("GO");
+        } catch (Exception e){}
 
-            synchronized (start) {
-                start.notifyAll();
+        synchronized (start) {
+            start.notifyAll();
 
-            }
-
-            try {
-                synchronized (end) {
-                    end.wait();
-                }
-            } catch (Exception e) {}
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
+            
+        synchronized (end) {
+            try{
+                end.wait();
+            } catch (InterruptedException e) {}            
+        }            
 
         for (TheRealRun r : runnerList) {
             if (r.isAlive()) {
