@@ -11,7 +11,10 @@
 
 int main(int n_hijos)
 {
+
   pid_t child;
+
+  printf("pid del padre : %d", child);
 
   for (int i = 0; i < n_hijos; i++)
   {

@@ -9,7 +9,6 @@ public class TheRealRun extends Thread {
 
     public static final int TOTAL_KM = 100;
     public static final int KM_RANGE = 10;
-    public static final long WAIT_TIME = 333;
 
     public TheRealRun(int number, Object start, Object end) {
         this.number = number;
@@ -37,24 +36,22 @@ public class TheRealRun extends Thread {
             while (kmCovered < TOTAL_KM) {
                 kmCovered += (int) (Math.random() * KM_RANGE);
                 try {
-                    Thread.sleep(WAIT_TIME);
+                    Thread.sleep(333);
 
                 } catch (Exception e) {
                 }
             }
 
-            timeEnd = System.currentTimeMillis();
-
             synchronized (end) {
                 end.notify();
             }
-            
+            timeEnd = System.currentTimeMillis();
 
             runnerTime = timeEnd - timeStart;
 
             System.out.printf("Runner number %d has finished with time: %d mS\n", number, runnerTime);
 
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

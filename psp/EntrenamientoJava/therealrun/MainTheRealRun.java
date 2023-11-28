@@ -17,7 +17,7 @@ public class MainTheRealRun {
         Object end = new Object();
 
         for (int runnerNumber = 1; runnerNumber < TOTAL_RUNNERS; runnerNumber++) {
-            TheRealRun runner = new TheRealRun(runnerNumber, start, end);
+            Thread runner = new Thread(new TheRealRun(runnerNumber, start, end));
             runnerList.add(runner);
             runner.start();
         }
@@ -36,11 +36,10 @@ public class MainTheRealRun {
 
             }
 
-            try {
-                synchronized (end) {
-                    end.wait();
-                }
-            } catch (Exception e) {}
+        
+            synchronized (end) {
+                end.wait();
+            }
 
         } catch (InterruptedException e) {
             e.printStackTrace();

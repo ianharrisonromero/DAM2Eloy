@@ -15,8 +15,8 @@
 #define N_RANDOMS 20
 #define MAX_RANGE 100
 #define MIN_RANGE 1
-
-
+#define READ 0
+#define WRITE 1
 
 int main()
 {
@@ -46,51 +46,51 @@ int main()
     {
         // printf("Soy el PADRE y mi i multiplicada por 3 es %d\n", i * 3); // padre se queda con el número más alto (en este caso el 2)
         srand(time(NULL));
-        close(fd_odds[0]);
-        close(fd_evens[0]);
+        close(fd_odds[READ]);
+        close(fd_evens[READ]);
         for (int i = 0; i < N_RANDOMS; i++)
         {
-            int rand_num = rand() % MAX_RANGE + MIN_RANGE;
+            int rand_num = rand() % (MAX_RANGE - MIN_RANGE) + MIN_RANGE;
             if (rand_num % 2 == 0)
             {
-                write(fd_evens[1], &rand_num, sizeof(rand_num));
+                write(fd_evens[WRITE], &rand_num, sizeof(rand_num));
                 even_counter++;
             }
             else
             {
-                write(fd_odds[1], &rand_num, sizeof(rand_num));
+                write(fd_odds[WRITE], &rand_num, sizeof(rand_num));
                 odd_counter++;
             }
         }
-        close(fd_odds[1]);
-        close(fd_evens[1]);
+        close(fd_odds[WRITE]);
+        close(fd_evens[WRITE]);
     }
 
     if (i == 0)
     {
         printf("\nSoy el hijo PAR, he recibido estos números : \n");
-        close(fd_evens[1]);
-        close(fd_odds[1]);
-        close(fd_odds[0]);
-        while (read(fd_evens[0], &rand_num, sizeof(20)) > 0 )
+        close(fd_evens[WRITE]);
+        close(fd_odds[WRITE]);
+        close(fd_odds[READ]);
+        while (read(fd_evens[READ], &rand_num, sizeof(20)) > 0)
         {
             printf("%d ", rand_num);
         }
-        close(fd_evens[0]);
+        close(fd_evens[READ]);
     }
 
     if (i == 1)
     {
-        close(fd_evens[0]);
-        close(fd_evens[1]);
-        close(fd_odds[1]);
+        close(fd_evens[READ]);
+        close(fd_evens[WRITE]);
+        close(fd_odds[WRITE]);
         printf("\nSoy el hijo IMPAR, he recibido estos números : \n");
 
-        while (read(fd_odds[0], &rand_num, sizeof(20)) > 0 )
+        while (read(fd_odds[READ], &rand_num, sizeof(20)) > 0)
         {
             printf("%d ", rand_num);
         }
-        close(fd_odds[0]);
+        close(fd_odds[READ]);
     }
 
     // printf("counters : %d , %d", even_counter, odd_counter);

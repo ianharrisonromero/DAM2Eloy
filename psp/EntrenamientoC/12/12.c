@@ -50,7 +50,7 @@ int main(int argc, char const *argv[])
         
     }
 
-    for (int j = 1; j < longitud; j++)
+    for (int j = 1; j <= longitud; j++)
     {
         if (j % n_procesos == i)
         {
