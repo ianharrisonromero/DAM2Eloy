@@ -17,7 +17,7 @@ public class MainTheRealRun {
         Object end = new Object();
 
         for (int runnerNumber = 1; runnerNumber < TOTAL_RUNNERS; runnerNumber++) {
-            Thread runner = new Thread(new TheRealRun(runnerNumber, start, end));
+            TheRealRun runner = new TheRealRun(runnerNumber, start, end);
             runnerList.add(runner);
             runner.start();
         }
