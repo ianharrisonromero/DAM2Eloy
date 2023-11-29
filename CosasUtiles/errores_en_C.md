@@ -39,6 +39,13 @@
             exit(EXIT_FAILURE);
         }
 
+        // Error handling for open
+        int file = open("example.txt", O_RDONLY);
+        if (file == -1) {
+        perror("Error opening file");
+        exit(EXIT_FAILURE);
+        }
+
         // Uncomment the line below to simulate an error while reading from the file
         // char buffer[100];
         // if (fgets(buffer, sizeof(buffer), file) == NULL) {
