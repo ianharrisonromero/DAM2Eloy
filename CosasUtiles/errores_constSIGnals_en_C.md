@@ -60,3 +60,34 @@
 
         return 0;
     }
+
+SIGTERM (Termination):
+
+Constant Value: 15
+SIGINT (Interrupt):
+
+Constant Value: 2
+SIGKILL (Kill):
+
+Constant Value: 9
+SIGUSR1 (User-defined signal 1):
+
+Constant Value: 10
+SIGUSR2 (User-defined signal 2):
+
+Constant Value: 12
+SIGSEGV (Segmentation fault):
+
+Constant Value: 11
+SIGCHLD (Child process status change):
+
+Constant Value: Can vary (commonly 17)
+SIGHUP (Hangup):
+
+Constant Value: 1
+SIGPIPE (Broken pipe):
+
+Constant Value: 13
+SIGALRM (Alarm clock):
+
+Constant Value: 14

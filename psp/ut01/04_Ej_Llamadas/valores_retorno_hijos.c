@@ -96,7 +96,7 @@ int main(int argc, char const *argv[])
 
     if (hijo != 0)
     {
-        sleep(1);
+        sleep(5);
 
         for (int i = 0; i < N_HIJOS; i++)
         {
