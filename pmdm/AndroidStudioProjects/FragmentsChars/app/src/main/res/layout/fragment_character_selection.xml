@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/iv1"
-        android:layout_width="401dp"
-        android:layout_height="73dp"
+        android:layout_width="121dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="76dp"
         app:layout_constraintBottom_toTopOf="@+id/iv2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,12 +18,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.988"
         app:srcCompat="@android:drawable/presence_audio_busy"
-        tools:src="@drawable/frodo" />
+        tools:src="@android:drawable/presence_audio_busy" />
 
     <ImageView
         android:id="@+id/iv3"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="385dp"
+        android:layout_height="53dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,8 +33,8 @@
 
     <ImageView
         android:id="@+id/iv2"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="374dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toTopOf="@+id/iv3"
         app:layout_constraintEnd_toEndOf="parent"

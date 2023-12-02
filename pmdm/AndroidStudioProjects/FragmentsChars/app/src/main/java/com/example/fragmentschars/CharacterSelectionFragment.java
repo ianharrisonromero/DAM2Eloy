@@ -1,12 +1,16 @@
 package com.example.fragmentschars;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +27,15 @@ public class CharacterSelectionFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    ImageView iv1, iv2, iv3;
+    public interface OnCharacterChange {
+        void onCharacterChange(GameCharacter gameCharacter);
+
+    }
+    OnCharacterChange listener;
+
+
+
 
     public CharacterSelectionFragment() {
         // Required empty public constructor
@@ -59,8 +72,46 @@ public class CharacterSelectionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_character_selection, container, false);
-        // Inflate the layout for this fragment
+        iv1 = layout.findViewById(R.id.iv1);
+        iv2 = layout.findViewById(R.id.iv2);
+        iv3 = layout.findViewById(R.id.iv3);
+        iv1.setTag(GameCharacter.MIC);
+        iv1.setTag(GameCharacter.SQUARE);
+        iv1.setTag(GameCharacter.STAR);
 
+
+
+        View.OnClickListener handler = view -> {
+            Button button = (Button) view;
+            if (button.getTag().toString().equals(GameCharacter.MIC)){
+                listener.onCharacterChange(GameCharacter.MIC);
+            }
+
+//            int currenIntScore = Integer.parseInt(currentScore);
+//            currenIntScore += 1;
+//            button.setText(String.valueOf(currenIntScore));
+//            if(currenIntScore >= MAX_SCORE){
+//                textViewField.setVisibility(View.GONE);
+//                buttonRed.setVisibility(View.GONE);
+//                buttonBlue.setVisibility(View.GONE);
+//                textViewCourt.setVisibility(View.GONE);
+//                listener.onGameEnd(courtName + " ->  Red " + buttonRed.getText() + " - " + buttonBlue.getText() + " Blue");
+//            }
+        };
+
+        iv1.setOnClickListener(handler);
+        iv2.setOnClickListener(handler);
+        iv3.setOnClickListener(handler);
         return layout;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof OnCharacterChange){
+            listener = (OnCharacterChange) context;
+        } else {
+            throw new ClassCastException(context.toString() + " must implement gameEndListener interface");
+        }
     }
 }
