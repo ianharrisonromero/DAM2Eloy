@@ -7,9 +7,11 @@ CREATE TABLE employee (
     Idemp NUMBER,
     Name VARCHAR2(30),
     Lastname VARCHAR2(30),
-    Addresses child_table
-) NESTED TABLE Addresses STORE AS t_addresses_table;
-/
+    Hijos tabla_hijos,
+    CONSTRAINT hijos_nn CHECK (Hijos IS NOT NULL),
+    CONSTRAINT hijos_valid CHECK (Hijos IS NULL OR Hijos IS TABLE_HIJOS),
+    CONSTRAINT t_hijos_fk FOREIGN KEY (Hijos) REFERENCES TABLE_HIJOS
+) NESTED TABLE Hijos STORE AS t_hijos;
 
 --EJERCICIO 3
 SELECT object_name, object_type FROM user_objects;

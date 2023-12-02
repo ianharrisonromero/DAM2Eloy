@@ -3,6 +3,7 @@ package com.example.thelordoftheringscharacterselector;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -22,23 +23,67 @@ public class WeaponSelectorActivity extends AppCompatActivity {
         ivBow = findViewById(R.id.ivBow);
         ivBack = findViewById(R.id.ivBack);
 
-
         Intent intent = getIntent();
         String playerTag = intent.getStringExtra(MainActivity.PLAYER_TAG);
 
+        if (LOTRWeapons.SWORD.isSelected()){
+            ivSword.setColorFilter(Color.DKGRAY);
+        }
+        if (LOTRWeapons.RING.isSelected()){
+            ivRing.setColorFilter(Color.DKGRAY);
+        }
+        if (LOTRWeapons.BOW.isSelected()){
+            ivBow.setColorFilter(Color.DKGRAY);
+        }
+
+
+
         ivSword.setOnClickListener(v -> {
-            handleWeaponSelection(MainActivity.PLAYER_TAG, playerTag,
-                                    MainActivity.WEAPON_TAG, LOTRWeapons.SWORD.toString());
+            if (LOTRWeapons.SWORD.isSelected()){
+
+            } else {
+                handleWeaponSelection(MainActivity.PLAYER_TAG, playerTag,
+                        MainActivity.WEAPON_TAG, LOTRWeapons.SWORD.toString());
+                LOTRWeapons.SWORD.setSelected(true);
+                LOTRWeapons.RING.setSelected(false);
+                LOTRWeapons.BOW.setSelected(false);
+
+            }
         });
 
         ivRing.setOnClickListener(v -> {
-            handleWeaponSelection(MainActivity.PLAYER_TAG, playerTag,
-                    MainActivity.WEAPON_TAG, LOTRWeapons.RING.toString());
+            if (LOTRWeapons.RING.isSelected()){
+
+            } else {
+                handleWeaponSelection(MainActivity.PLAYER_TAG, playerTag,
+                        MainActivity.WEAPON_TAG, LOTRWeapons.RING.toString());
+                LOTRWeapons.RING.setSelected(true);
+                LOTRWeapons.SWORD.setSelected(false);
+                LOTRWeapons.BOW.setSelected(false);
+            }
+
         });
 
         ivBow.setOnClickListener(v -> {
-            handleWeaponSelection(MainActivity.PLAYER_TAG, playerTag,
-                    MainActivity.WEAPON_TAG, LOTRWeapons.BOW.toString());
+            if (LOTRWeapons.BOW.isSelected()){
+
+            }else {
+                handleWeaponSelection(MainActivity.PLAYER_TAG, playerTag,
+                        MainActivity.WEAPON_TAG, LOTRWeapons.BOW.toString());
+                LOTRWeapons.BOW.setSelected(true);
+                if (LOTRWeapons.SWORD.isSelected()){
+
+                } else {
+                    LOTRWeapons.SWORD.setSelected(false);
+                }
+                if (LOTRWeapons.RING.isSelected()){
+
+                } else {
+                    LOTRWeapons.RING.setSelected(false);
+
+                }
+            }
+
         });
 
         ivBack.setOnClickListener(v -> {

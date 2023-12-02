@@ -8,7 +8,9 @@ import androidx.activity.result.ActivityResultCallback;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,14 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onActivityResult(ActivityResult result) {
-                if(result.getResultCode() == CharacterSelectorActivity.RESULT_OK ||
-                        result.getResultCode() == WeaponSelectorActivity.RESULT_OK){
+                if(result.getResultCode() == CharacterSelectorActivity.RESULT_OK){
                     Intent data = result.getData();
                     selectedPlayer = data.getStringExtra(PLAYER_TAG);
-                    System.out.println("se ha recibido la INFO correctamente");
+
                     try {
                         getSelectedItem = data.getStringExtra(CHARACTER_TAG);
-                        LOTRCharacters c = LOTRCharacters.valueOf(getSelectedItem);
+//                        LOTRCharacters c = LOTRCharacters.valueOf(getSelectedItem);
                         if(selectedPlayer.equals(PLAYER_1)){
                             if (getSelectedItem.equals(LOTRCharacters.FRODO.toString())){
                                 ivChar1.setImageResource(R.drawable.frodo);
@@ -66,36 +67,54 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     } catch (Exception e){}
-                    try {
-                        getSelectedItem = data.getStringExtra(WEAPON_TAG);
-//                        LOTRWeapons c = LOTRWeapons.valueOf(getSelectedItem);
-                        if(selectedPlayer.equals(PLAYER_1)){
-                            if (getSelectedItem.equals(LOTRWeapons.SWORD.toString())){
-                                ivWeapon1.setImageResource(R.drawable.sword);
-                            } else if (getSelectedItem.equals(LOTRWeapons.RING.toString())) {
-                                ivWeapon1.setImageResource(R.drawable.ring);
-                            } else if (getSelectedItem.equals(LOTRWeapons.BOW.toString())) {
-                                ivWeapon1.setImageResource(R.drawable.bow);
-                            }
-                        } else if (selectedPlayer.equals(PLAYER_2)) {
-                            if (getSelectedItem.equals(LOTRWeapons.SWORD.toString())){
-                                ivWeapon2.setImageResource(R.drawable.sword);
-                            } else if (getSelectedItem.equals(LOTRWeapons.RING.toString())) {
-                                ivWeapon2.setImageResource(R.drawable.ring);
-                            } else if (getSelectedItem.equals(LOTRWeapons.BOW.toString())) {
-                                ivWeapon2.setImageResource(R.drawable.bow);
-                            }
-                        }
-                    } catch (Exception e){}
-                    //[ViewVaribaleName].setText(data.getStringExtra([Activity2].[CONSTANT]));
-                    // Activity2 es el nombre que se le ha dado a la actividad a la que se envía (de la que quieres recibir info)
-                } else if (result.getResultCode() == CharacterSelectorActivity.RESULT_CANCELED ||
-                                        result.getResultCode() == WeaponSelectorActivity.RESULT_CANCELED ){
+                } else if (result.getResultCode() == CharacterSelectorActivity.RESULT_CANCELED){
                 } else {
                     //otro error
                 }
             }
         });
+        ActivityResultLauncher<Intent> launcher2 = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            public void onActivityResult(ActivityResult result) {
+            if(result.getResultCode() == WeaponSelectorActivity.RESULT_OK){
+                Intent data = result.getData();
+                selectedPlayer = data.getStringExtra(PLAYER_TAG);
+                try {
+                    getSelectedItem = data.getStringExtra(WEAPON_TAG);
+                    if(selectedPlayer.equals(PLAYER_1)){
+                        if (getSelectedItem.equals(LOTRWeapons.SWORD.toString())){
+                            ivWeapon1.setImageResource(R.drawable.sword);
+                        } else if (getSelectedItem.equals(LOTRWeapons.RING.toString())) {
+                            ivWeapon1.setImageResource(R.drawable.ring);
+                        } else if (getSelectedItem.equals(LOTRWeapons.BOW.toString())) {
+                            ivWeapon1.setImageResource(R.drawable.bow);
+                        } else {
+                            Log.e("MainActivity", "Error: WEAPON_TAG not found in data extras");
+                        }
+                    } else if (selectedPlayer.equals(PLAYER_2)) {
+                        if (getSelectedItem.equals(LOTRWeapons.SWORD.toString())){
+                            ivWeapon2.setImageResource(R.drawable.sword);
+                        } else if (getSelectedItem.equals(LOTRWeapons.RING.toString())) {
+                            ivWeapon2.setImageResource(R.drawable.ring);
+                        } else if (getSelectedItem.equals(LOTRWeapons.BOW.toString())) {
+                            ivWeapon2.setImageResource(R.drawable.bow);
+                        }else {
+                            Log.e("MainActivity", "Error: WEAPON_TAG not found in data extras");
+                        }
+                    }
+                } catch (Exception e){
+                    Log.e("MainActivity", "Error handling weapon selection: " + e.getMessage());
+
+//                            Toast.makeText(MainActivity.this, "Couldnt reach the weapon", Toast.LENGTH_LONG).show();
+
+                }
+                //[ViewVaribaleName].setText(data.getStringExtra([Activity2].[CONSTANT]));
+                // Activity2 es el nombre que se le ha dado a la actividad a la que se envía (de la que quieres recibir info)
+            } else if (result.getResultCode() == WeaponSelectorActivity.RESULT_CANCELED ){
+            } else {
+                //otro error
+            }
+        }
+    });
 
 
         ivChar1.setOnClickListener((v) ->{
@@ -107,11 +126,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ivWeapon1.setOnClickListener(v -> {
-            weaponSelectorLauncher(PLAYER_1, launcher);
+            weaponSelectorLauncher(PLAYER_1, launcher2);
         });
 
         ivWeapon2.setOnClickListener((v) ->{
-            weaponSelectorLauncher(PLAYER_2, launcher);
+            weaponSelectorLauncher(PLAYER_2, launcher2);
         });
 
         }
@@ -122,10 +141,10 @@ public class MainActivity extends AppCompatActivity {
             launcher.launch(intent);
         }
 
-        public void weaponSelectorLauncher(String weaponTag, ActivityResultLauncher<Intent> launcher){
+        public void weaponSelectorLauncher(String playerTag, ActivityResultLauncher<Intent> launcher2){
             Intent intent = new Intent(this, WeaponSelectorActivity.class);
-            intent.putExtra(WEAPON_TAG, weaponTag);
-            launcher.launch(intent);
+            intent.putExtra(PLAYER_TAG, playerTag);
+            launcher2.launch(intent);
         }
 
 
