@@ -29,7 +29,7 @@ public class CharacterSelectionFragment extends Fragment {
     private String mParam2;
     ImageView iv1, iv2, iv3;
     public interface OnCharacterChange {
-        void onCharacterChange(GameCharacter gameCharacter);
+        void onCharacterChange(GameCharacter gameCharacter, CharacterSelectionFragment fragment);
 
     }
     OnCharacterChange listener;
@@ -75,16 +75,20 @@ public class CharacterSelectionFragment extends Fragment {
         iv1 = layout.findViewById(R.id.iv1);
         iv2 = layout.findViewById(R.id.iv2);
         iv3 = layout.findViewById(R.id.iv3);
-        iv1.setTag(GameCharacter.MIC);
-        iv1.setTag(GameCharacter.SQUARE);
-        iv1.setTag(GameCharacter.STAR);
+        iv1.setTag(GameCharacter.FRODO);
+        iv2.setTag(GameCharacter.GANDALF);
+        iv3.setTag(GameCharacter.LEGOLAS);
 
 
 
         View.OnClickListener handler = view -> {
-            Button button = (Button) view;
-            if (button.getTag().toString().equals(GameCharacter.MIC)){
-                listener.onCharacterChange(GameCharacter.MIC);
+            ImageView imageView = (ImageView) view;
+            if (imageView.getTag().equals(GameCharacter.FRODO)){
+                listener.onCharacterChange(GameCharacter.FRODO, this);
+            } else if (imageView.getTag().equals(GameCharacter.GANDALF)) {
+                listener.onCharacterChange(GameCharacter.GANDALF, this);
+            } else if (imageView.getTag().equals(GameCharacter.LEGOLAS)) {
+                listener.onCharacterChange(GameCharacter.LEGOLAS, this);
             }
 
 //            int currenIntScore = Integer.parseInt(currentScore);
