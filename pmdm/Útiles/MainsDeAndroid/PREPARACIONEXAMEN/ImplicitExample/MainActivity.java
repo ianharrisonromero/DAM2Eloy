@@ -1,4 +1,4 @@
-package com.rittz.implicitintents;
+package com.rittz.implicitexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,19 +26,26 @@ public class MainActivity extends AppCompatActivity {
         buttonSms = findViewById(R.id.buttonSms);
         buttonCamera = findViewById(R.id.buttonMagic);
 
+        //ACTION_VIEW - BROWSER
         buttonBrowser.setOnClickListener(view -> {
             Intent implicit = new Intent(Intent.ACTION_VIEW, Uri.parse(URL_OUT));
             startActivity(implicit);
         });
 
+        //ACTION_DIAL - DIAL A NUMBER
         buttonDial.setOnClickListener(view -> {
             Intent implicit = new Intent(Intent.ACTION_DIAL, Uri.parse(DIAL_OUT));
-            startActivity(implicit);
+            if (implicit.resolveActivity(getPackageManager()) != null) {
+                startActivity(implicit);
+            } else {
+                Toast.makeText(MainActivity.this, "Error perrol", Toast.LENGTH_LONG).show();
+            }
         });
 
+        //ACTION_SEND - SMS
         buttonSms.setOnClickListener(view -> {
             String phoneNumber = DIAL_OUT;
-            String message = getString(R.string.sample_msg);;
+            String message = "Hola, Pepito";
 
 
             Intent intent = new Intent(Intent.ACTION_SEND);
@@ -46,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Intent.EXTRA_STREAM, message);
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, "Error perrol", Toast.LENGTH_LONG).show();
             }
 
             /*
@@ -60,9 +70,14 @@ public class MainActivity extends AppCompatActivity {
             */
         });
 
+        //ACTION_IMAGE_CAPTURE - CAMERA
         buttonCamera.setOnClickListener(view -> {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivity(cameraIntent);
+            if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(cameraIntent);
+            } else {
+                Toast.makeText(MainActivity.this, "Error perrol", Toast.LENGTH_LONG).show();
+            }
         });
     }
 }
