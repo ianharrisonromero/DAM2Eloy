@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40ea7e58-46d3-4254-adfc-06f9d114afaa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/src/main/java/com/example/thelordoftheringscharacterselector/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/src/main/java/com/example/thelordoftheringscharacterselector/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLordOfTheRingsCharacterSelector/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Útiles/MainsDeAndroid/u2_Citas/MyFragment.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

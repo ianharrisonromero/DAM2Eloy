@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Ejercicio1</string>
+    <string name="alert_dialog_date">Not a valid date\n</string>
+    <string name="alert_dialog_title">Invalid Date</string>
+    <string name="alert_null_msg">Invalid Date\n</string>
+    <string name="alert_dialog_city">Origen y destino no pueden coincidir</string>
+    <string name="alert_null_msg_date">Origen y destino no pueden coincidir</string>
+    <string name="buttonFechaIda">Date origin</string>
+    <string name="buttonFechaVuelta">Date back</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

@@ -1,0 +1,5 @@
+package com.example.ejercicio1;
+
+public enum Ciudad {
+    MADRID, BARCELONA, VALENCIA, ZARAGOZA, SEVILLA, MALAGA, MURCIA, PALMA_DE_MALLORCA, LAS_PALMAS, ALICANTE;
+}
