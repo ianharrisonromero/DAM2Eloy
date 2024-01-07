@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Practica0",
+      "request": "launch",
+      "mainClass": "Practica0",
+      "projectName": "DAM2Eloy_230ff8b9"
+    },
+    {
+      "type": "java",
       "name": "SynchronizedCounter",
       "request": "launch",
       "mainClass": "SynchronizedCounter"
@@ -88,6 +95,3 @@
     }
   ]
 }
-
-  
-
