@@ -1,3 +1,7 @@
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
 public class client1 {
 
     /**
@@ -16,7 +20,7 @@ public class client1 {
 
     public static void main(String[] args) {
 
-        int port;
+        Integer port = null;
 
         if (args.length != 3) {
             System.out.println("ERROR: se necesitan tres parámetros (IP, puerto y mensaje)\n");
@@ -31,14 +35,10 @@ public class client1 {
 
         try {
             DatagramSocket socket = new DatagramSocket();
-            InetAddress ipAddress = args[0];
+            InetAddress ipAddress = InetAddress.getByName(args[0]);
             byte[] sendData = new byte[MAX_LENGTH];
-            String sentence = ""; // Mensaje a enviar
-            // TODO : un while para que le puedas enviar al server todos los mensajes que
-            // quieras.
-
+            String sentence = args[2]; // Mensaje a enviar
             sendData = sentence.getBytes();
-
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, port);
             socket.send(sendPacket); // Envía el paquete al servidor
             socket.close();

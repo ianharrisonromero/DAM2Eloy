@@ -1,4 +1,6 @@
-package psp.ut03.tareaUDP;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 /**
  * Tarea 1: Ejemplo simple
@@ -18,7 +20,7 @@ public class server1 {
 
     public static void main(String[] args) {
 
-        int port;
+        Integer port = null;
 
         if (args.length != 1) {
             System.out.println("ERROR: se necesita un parámetro (puerto)\n");
@@ -32,7 +34,7 @@ public class server1 {
         }
 
         try {
-            DatagramSocket socket = new DatagramSocket(port); // Abre el socket en el puerto 9876
+            DatagramSocket socket = new DatagramSocket(port); // Abre el socket en el puerto XXXX
             byte[] receivedData = new byte[MAX_LENGTH];
 
             while (true) {
