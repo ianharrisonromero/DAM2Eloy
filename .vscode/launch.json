@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "MainLifts",
+      "request": "launch",
+      "mainClass": "MainLifts",
+      "projectName": ""
+    },
+    {
+      "type": "java",
       "name": "Practica0",
       "request": "launch",
       "mainClass": "Practica0",
