@@ -57,7 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    // Replace the contents of a view (invoked by thFe layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 

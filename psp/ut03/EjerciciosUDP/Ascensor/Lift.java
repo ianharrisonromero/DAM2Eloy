@@ -1,5 +1,6 @@
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-
+import java.net.InetAddress;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,10 +13,11 @@ public class Lift {
     Integer port = null;
     String server;
     LiftState state;
+    JLabel stateLabel;
+    JLabel currentFloorLabel;
     static final int TRAVEL_TIME = 1000;
     static final int LAPSE = 100;
     private static final int MAX_LENGTH = 65535;
-
 
     public Lift(int code, Integer port, String server) {
         this.code = code;
@@ -23,10 +25,6 @@ public class Lift {
         this.server = server;
         state = LiftState.STATIONARY;
         start();
-    }
-
-    public String getSignal(){
-        return code + ";" + getFloor() + ";" + getState();
     }
 
     private void start() {
@@ -39,36 +37,21 @@ public class Lift {
 
         JButton buttonUp = new JButton("Up");
         JButton buttonDown = new JButton("Down");
-        JLabel stateLabel = new JLabel("State : " + getState());
-        JLabel currentFloorLabel = new JLabel("Floor : " + getFloor());
+        stateLabel = new JLabel("State : " + getState());
+        currentFloorLabel = new JLabel("Floor : " + getFloor());
 
         panel.add(buttonDown);
         panel.add(buttonUp);
-        panel.add(state);
-        panel.add(currentFloor);
+        panel.add(stateLabel);
+        panel.add(currentFloorLabel);
+        frame.add(panel);
 
         buttonUp.addActionListener(li -> {
-            floor++;
-            stateLabel.setText(state.GOING_UP.toString());
-            try {
-                Thread.sleep(TRAVEL_TIME);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            currentFloorLabel.setText(getFloor());
-            stateLabel.setText(state.STATIONARY.toString());
+            goUp();
         });
 
         buttonDown.addActionListener(li -> {
-            floor--;
-            stateLabel.setText(state.GOING_DOWN.toString());
-            try {
-                Thread.sleep(TRAVEL_TIME);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            currentFloorLabel.setText(getFloor());
-            stateLabel.setText(state.STATIONARY.toString());
+            goDown();
         });
 
         while (true) {
@@ -77,26 +60,62 @@ public class Lift {
                 DatagramSocket socket = new DatagramSocket();
                 InetAddress ipAddress = InetAddress.getByName(server);
                 byte[] sendData = new byte[MAX_LENGTH];
-                String sentence = getSignal(); // Mensaje a enviar
-                sendData = sentence.getBytes();
+                String signal = getSignal(); // Mensaje a enviar
+                sendData = signal.getBytes();
                 DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, port);
                 socket.send(sendPacket); // Envía el paquete al servidor
                 socket.close();
+                Thread.sleep(LAPSE);
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            Thread.sleep(LAPSE);
         }
 
     }
 
-    public int getFloor() {
-        return floor;
+    public String getFloor() {
+        return String.valueOf(floor);
     }
 
-    public String getState(){
+    public String getState() {
         return state.toString();
+    }
+
+    public String getSignal() {
+        return code + ";" + getFloor() + ";" + getState();
+    }
+
+    void goDown() {
+        floor--;
+        stateLabel.setText(state.GOING_DOWN.toString());
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(TRAVEL_TIME);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            state = LiftState.STATIONARY;
+            currentFloorLabel.setText(getFloor());
+            stateLabel.setText(getState());
+        });
+        t.start();
+    }
+
+    public void goUp() {
+        floor++;
+        stateLabel.setText(state.GOING_UP.toString());
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(TRAVEL_TIME);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            state = LiftState.STATIONARY;
+            currentFloorLabel.setText(getFloor());
+            stateLabel.setText(getState());
+        });
+        t.start();
     }
 
 }
