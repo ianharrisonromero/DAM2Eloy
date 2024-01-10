@@ -74,18 +74,6 @@ public class Lift {
 
     }
 
-    public String getFloor() {
-        return String.valueOf(floor);
-    }
-
-    public String getState() {
-        return state.toString();
-    }
-
-    public String getSignal() {
-        return code + ";" + getFloor() + ";" + getState();
-    }
-
     void goDown() {
         floor--;
         stateLabel.setText(state.GOING_DOWN.toString());
@@ -116,6 +104,22 @@ public class Lift {
             stateLabel.setText(getState());
         });
         t.start();
+    }
+
+    public String getFloor() {
+        return String.valueOf(floor);
+    }
+
+    public String getState() {
+        return state.toString();
+    }
+
+    public String getSignal() {
+        return code + ";" + getFloor() + ";" + getState();
+    }
+
+    public int getCode() {
+        return code;
     }
 
 }
