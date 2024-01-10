@@ -3,7 +3,7 @@
   "C_Cpp.errorSquiggles": "disabled",
   "java.home": "/Library/Java/JavaVirtualMachines/jdk-16.0.2.jdk/Contents/Home",
   "cmake.configureOnOpen": true,
-  "java.project.sourcePaths": ["psp/ut02/sinchonized"],
+  "java.project.sourcePaths": ["psp/ut02/sinchonized", "ad/2doTrimestre"],
   "files.associations": {
     "*.java": "java",
     "6.C": "cpp"
