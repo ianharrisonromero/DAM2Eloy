@@ -7,7 +7,7 @@ require("db.php");
 try {
 
 
-    $stmt = $conn->prepare("SELECT id , user , pass FROM users where user=? and pass=?");
+    $stmt = $conn->prepare("SELECT id , user , pass FROM users WHERE user=? AND pass=?");
     /* 
     //con bind
     $stmt->bindParam(':user', $_POST['user']);

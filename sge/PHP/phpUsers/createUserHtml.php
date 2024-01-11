@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Formulario crear usuario</h1>
+    <h1>Formulario crear usuario</h1> <br>
     <form action="checkLogin.php" method="post">
         name <input type="text" name="name"> <br>
         password <input type="text" name="password"> <br>
