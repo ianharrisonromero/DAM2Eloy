@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "IsKingInCheckKata",
+      "request": "launch",
+      "mainClass": "IsKingInCheckKata",
+      "projectName": "DAM2Eloy_230ff8b9"
+    },
+    {
+      "type": "java",
+      "name": "IsKingCheck",
+      "request": "launch",
+      "mainClass": "IsKingCheck",
+      "projectName": "DAM2Eloy_230ff8b9"
+    },
+    {
+      "type": "java",
       "name": "Practica0",
       "request": "launch",
       "mainClass": "Practica0",
