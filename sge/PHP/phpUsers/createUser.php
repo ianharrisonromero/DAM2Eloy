@@ -11,8 +11,9 @@
     <form action="checkLogin.php" method="post">
         name <input type="text" name="name"> <br>
         password <input type="text" name="password"> <br>
-        <input type="submit" value="Login" class="btn btn-primary>     
+        <input type="submit" value="Login">
     </form>
-    
+
 </body>
+
 </html>
