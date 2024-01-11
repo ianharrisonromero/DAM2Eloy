@@ -33,8 +33,8 @@ public class MainLifts {
         panel.add(label2);
         frame.add(panel);
 
-        Lift lift1 = new Lift(01, 8000, "localhost");
-        Lift lift2 = new Lift(02, 8000, "localhost");
+        Lift lift1 = new Lift(01, port, server);
+        // Lift lift2 = new Lift(02, 8000, "localhost");
 
         try {
             DatagramSocket socket = new DatagramSocket(port); // Abre el socket en el puerto XXXX
@@ -46,8 +46,10 @@ public class MainLifts {
 
                 // Extrae la información del paquete
                 String message = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
+                System.out.println(message);
                 label1.setText(message);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

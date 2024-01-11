@@ -3,6 +3,7 @@
   "configurations": [
     {
       "type": "java",
+<<<<<<< HEAD
       "name": "IsKingInCheckKata",
       "request": "launch",
       "mainClass": "IsKingInCheckKata",
@@ -14,6 +15,12 @@
       "request": "launch",
       "mainClass": "IsKingCheck",
       "projectName": "DAM2Eloy_230ff8b9"
+=======
+      "name": "MainLifts",
+      "request": "launch",
+      "mainClass": "MainLifts",
+      "projectName": ""
+>>>>>>> 9fd11f51aeb1fe9232d11154b7969893aca512f7
     },
     {
       "type": "java",
