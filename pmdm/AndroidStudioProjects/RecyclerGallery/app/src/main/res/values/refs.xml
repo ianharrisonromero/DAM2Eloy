@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="game1">@drawable/game1photo</drawable>
+    <drawable name="game2">@drawable/game1photo</drawable>
+</resources>

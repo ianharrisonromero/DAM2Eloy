@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class bdAlumnosMenu {
+public class BdAlumnosMenu {
     private static Connection conexion;
 
     public static Connection getConexion() {
