@@ -10,7 +10,7 @@ import javax.swing.WindowConstants;
 public class Lift {
     int code;
     int floor = 0;
-    Integer port = null;
+    Integer port;
     String server;
     LiftState state;
     JLabel stateLabel;
@@ -54,23 +54,31 @@ public class Lift {
             goDown();
         });
 
-        while (true) {
+        new Thread(() -> {
+            while (true) {
 
-            try {
-                DatagramSocket socket = new DatagramSocket();
-                InetAddress ipAddress = InetAddress.getByName(server);
-                byte[] sendData = new byte[MAX_LENGTH];
-                String signal = getSignal(); // Mensaje a enviar
-                sendData = signal.getBytes();
-                DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, port);
-                socket.send(sendPacket); // Envía el paquete al servidor
-                socket.close();
-                Thread.sleep(LAPSE);
-            } catch (Exception e) {
-                e.printStackTrace();
+                try {
+                    DatagramSocket socket = new DatagramSocket();
+                    InetAddress ipAddress = InetAddress.getByName(server);
+                    byte[] sendData = new byte[MAX_LENGTH];
+                    String signal = getSignal(); // Mensaje a enviar
+                    sendData = signal.getBytes();
+                    DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipAddress, port);
+                    socket.send(sendPacket); // Envía el paquete al servidor
+                    socket.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    Thread.sleep(LAPSE);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
-
-        }
+        }).start();
 
     }
 
