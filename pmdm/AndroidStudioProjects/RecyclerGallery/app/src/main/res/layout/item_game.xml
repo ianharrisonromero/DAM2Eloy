@@ -16,7 +16,6 @@
         android:layout_width="113dp"
         android:layout_height="110dp"
         android:layout_gravity="center"
-        android:layout_marginStart="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -49,10 +48,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="2022-01-01 12:00 PM" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="35dp" />
 
     <!-- Add more UI elements as needed -->
 
