@@ -2,13 +2,10 @@ package com.example.recyclerviewsactivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+
 import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
+
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,10 +13,10 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
-    private ArrayList<GameModel> gameList;
+public class GalleryGameAdapter extends RecyclerView.Adapter<GalleryGameAdapter.ViewHolder> {
+    private ArrayList<GalleryGameModel> gameList;
 
-    public GameAdapter(ArrayList<GameModel> gameList) {
+    public GalleryGameAdapter(ArrayList<GalleryGameModel> gameList) {
         this.gameList = gameList;
     }
 
@@ -33,9 +30,9 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // Initialize UI elements
-            imageViewGame = itemView.findViewById(R.id.gamePhoto);
+            imageViewGame = itemView.findViewById(R.id.imageViewGamePicture);
             // You should replace R.id.imageViewGame with the actual ID used in your item layout
-            gameUserCreator = itemView.findViewById(R.id.gameUserCreator);
+            gameUserCreator = itemView.findViewById(R.id.textViewUserCreator);
 
         }
     }
@@ -43,7 +40,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate the layout for each item
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_game, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_gallery_game, parent, false);
         
         return new ViewHolder(view);
     }
@@ -51,7 +48,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Bind data to UI elements
-        GameModel game = gameList.get(position);
+        GalleryGameModel game = gameList.get(position);
 
         // Set data to UI elements in the ViewHolder
         holder.imageViewGame.setImageResource(game.getGamePhoto());
