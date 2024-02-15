@@ -1,4 +1,4 @@
-package Persona;
+package com.example.demoapi.persona;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
@@ -18,7 +18,7 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Basic
-    private String name;
-    private String lastName;
+    private String nombre;
+    private String apellidos;
     private String email;
 }
