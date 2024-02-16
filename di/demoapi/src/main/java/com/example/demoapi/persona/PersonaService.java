@@ -1,31 +1,47 @@
-<<<<<<< HEAD:di/demoapi/src/main/java/com/example/demoapi/persona/PersonaService.java
 package com.example.demoapi.persona;
 
-import org.springframework.beans.factory.annotation.Autowired;
-=======
-package Persona;
-
->>>>>>> c7f339dc3cc938da164715993a817d0531eee417:di/demoapi/src/main/java/Persona/PersonaService.java
-import org.springframework.stereotype.Service;
-
+import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class PersonaService {
-<<<<<<< HEAD:di/demoapi/src/main/java/com/example/demoapi/persona/PersonaService.java
-    @Autowired
-    private PersonaRepository personaRepository;
 
-    public void crearPersona(Persona persona) {
-        personaRepository.save(persona);
-    }
-=======
-
+  @Autowired
   private PersonaRepository personaRepository;
 
   public void crearPersona(Persona persona) {
     personaRepository.save(persona);
   }
->>>>>>> c7f339dc3cc938da164715993a817d0531eee417:di/demoapi/src/main/java/Persona/PersonaService.java
+
+  public boolean borrarPersona(Integer id) {
+    if (personaRepository.findById(id).isPresent()) {
+      personaRepository.deleteById(id);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public Optional<Persona> obtenerPersona(Integer id) {
+    return personaRepository.findById(id);
+  }
+
+  public List<Persona> obtenerTodas() {
+    return personaRepository.findAll();
+  }
+
+  public Optional<Persona> actualizarPersona(Integer id, Persona persona) {
+    Optional<Persona> p = personaRepository.findById(id);
+    if (p.isPresent()) {
+      p.get().setNombre(persona.getNombre());
+      p.get().setApellidos(persona.getApellidos());
+      p.get().setEmail(persona.getEmail());
+      personaRepository.saveAndFlush(p.get());
+    }
+    return p;
+  }
 }
