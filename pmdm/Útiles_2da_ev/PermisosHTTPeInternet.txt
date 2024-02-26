@@ -1,0 +1,8 @@
+//DENTRO DEL MANIFEST, en <application
+
+        android:usesCleartextTraffic="true"
+
+
+EXTRA, PERMISOS INTERNET, entre xmlns:tools y <application
+
+    <uses-permission android:name="android.permission.INTERNET" />

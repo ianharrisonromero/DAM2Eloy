@@ -1,0 +1,47 @@
+//EN LA PRIMERA ACTIVIDAD:
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+
+ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if(result.getResultCode() == Activity2.RESULT_OK){
+		    Intent data = result.getData();
+		    //ejemplo con String
+		    String stringReceived = data.getStringExtra(Activity2.[CONSTANT]);
+		    //hacer algo con el objeto recibido
+                } else if (result.getResultCode() == Activity2.RESULT_CANCELED){
+
+                } else {
+                    //otro error
+                }
+
+            }
+        });
+
+//en el OnClickListener que lanza la Activity2
+
+{
+		Intent intent = new Intent(MainActivity.this, Activity2.class);
+                intent.putExtra(INFO_EXTRA_1, extra1);
+                intent.putExtra(INFO_EXTRA_2, extra2);
+                launcher.launch(intent);
+}
+
+
+
+____
+____
+//EN LA SEGUNDA ACTIVIDAD (EJEMPLO DENTRO DE UN BOTÓN Y PASANDO INFO DE UN EDITTEXT):
+
+myButton.setOnClickListener(view -> {
+            Intent data = new Intent();
+            data.putExtra(INFO_EXTRA, extra);
+            setResult(Activity2.RESULT_OK, data);
+            finish();
+        });
+
+

@@ -5,6 +5,8 @@
     "ut02/carrera",
     "EntrenamientoJava/Date",
     "EntrenamientoJava",
-    "ut04/servidor_http"
-  ]
+    "ut04/servidor_http",
+    "observer/bettinghouses"
+  ],
+  "java.format.settings.url": "eclipse-formatter.xml"
 }

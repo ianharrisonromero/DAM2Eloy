@@ -1,0 +1,13 @@
+//CAMBIAR 'Container' por la clase que se esté usando
+//creando spinner
+        spinner = findViewById(R.id.spinner);
+        ArrayList<Container> containersList = new ArrayList<>();
+        containersList.add(new Container(CONE_CONTAINER_NAME));
+        containersList.add(new Container(CHOCO_CONE_CONTAINER_NAME));
+        containersList.add(new Container(SUNDAE_CONTAINER_NAME));
+
+        ArrayAdapter<Container> adapterContainer = new ArrayAdapter<>(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, containersList);
+        spinnerContainer.setAdapter(adapterContainer);
+
+//PARA RECUPERAR SELECCION EN OTRA PARTE DEL CÓDIGO:
+Container selectedContainer = (Container) spinnerContainer.getSelectedItem();
