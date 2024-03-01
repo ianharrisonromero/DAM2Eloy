@@ -1,22 +1,24 @@
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+
 import java.net.Socket;
 
 public class ThreadPintor implements Runnable {
 
-    public Socket clientSocket;
+    public Socket socket;
+    // public InetAddress clientIP;
+    // public int clientPort;
 
-    public ThreadPintor(Socket clientSocket) {
-        this.clientSocket = clientSocket;
-    }
-
-    public ThreadPintor(Socket clientSocket2, int clientPort, Object clientIPt) {
+    public ThreadPintor(Socket socket) {
+        this.socket = socket;
+        // this.clientPort = clientPort;
+        // this.clientIP = clientIP;
     }
 
     @Override
     public void run() {
         try {
-            DataInputStream clientInput = new DataInputStream(clientSocket.getInputStream());
+            DataInputStream clientInput = new DataInputStream(socket.getInputStream());
             String messageReceived = clientInput.readUTF();
             String messageBack = "";
             int altura = 0;
@@ -29,7 +31,7 @@ public class ThreadPintor implements Runnable {
 
             messageBack = createPiramid(altura);
 
-            sendBackToClient(messageBack);
+            sendBackToClient(messageBack, socket);
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -37,15 +39,14 @@ public class ThreadPintor implements Runnable {
 
     }
 
-    private void sendBackToClient(String piramide) {
+    private void sendBackToClient(String piramide, Socket socket) {
         try {
-            Socket socket = new Socket(clientSocket.getInetAddress(), clientSocket.getPort());
-            DataOutputStream outToClient = new DataOutputStream(clientSocket.getOutputStream());
+            DataOutputStream outToClient = new DataOutputStream(socket.getOutputStream());
             outToClient.writeUTF(piramide);
             socket.close();
         } catch (Exception e) {
+            // Manejar excepciones adecuadamente
         }
-
     }
 
     private String createPiramid(int altura) {
@@ -54,14 +55,15 @@ public class ThreadPintor implements Runnable {
         for (int i = 0; i < altura; i++) {
             // Adding spaces in front of numbers
             for (int j = 0; j < altura - i - 1; j++) {
-                System.out.print(" ");
+                piramid += " ";
             }
 
             // Printing numbers
             for (int k = 0; k <= i; k++) {
-                System.out.print("* ");
+                piramid += "* ";
             }
 
+            piramid += "\n";
         }
         return piramid;
 

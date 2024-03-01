@@ -1,5 +1,4 @@
-import java.net.Inet4Address;
-import java.net.InetAddress;
+// import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -18,13 +17,13 @@ public class ServerPiramides {
 
             while (true) {
 
-                Socket clientSocket = serverSocket.accept();
-                int clientPort = clientSocket.getPort();
-                InetAddress clientIP = clientSocket.getInetAddress();
+                Socket socket = serverSocket.accept();
+                // int clientPort = socket.getPort();
+                // InetAddress clientIP = socket.getInetAddress();
 
-                System.out.println("-> Petición recibida del cliente : " + clientSocket);
-                System.out.println("-> Lanzando thread para realizar petición");;
-                Thread threadPintor = new Thread(new ThreadPintor(clientSocket, clientPort, clientIP));
+                System.out.println("-> Petición recibida del cliente : " + socket);
+                System.out.println("-> Lanzando thread para gestionar petición");
+                Thread threadPintor = new Thread(new ThreadPintor(socket));
                 threadPintor.start();
 
             }
