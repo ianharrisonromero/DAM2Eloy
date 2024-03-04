@@ -1,4 +1,3 @@
-
 // import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -6,9 +5,9 @@ import java.net.Socket;
 /**
  * ServerPiramides
  */
-public class ServerPiramides {
+public class ServerPiramidesNc {
 
-    public static final int port = 8888;
+    public static final int port = 8000;
 
     public static void main(String[] args) {
 

@@ -25,11 +25,10 @@ public class ChatClient {
         sentData = msg.getBytes();
 
         DatagramPacket sendPacket = new DatagramPacket(
-          sentData,
-          sentData.length,
-          ipAddress,
-          port
-        );
+            sentData,
+            sentData.length,
+            ipAddress,
+            port);
         socket.send(sendPacket); // Envía el paquete al servidor
 
         while (!msg.trim().isEmpty()) {
@@ -46,10 +45,9 @@ public class ChatClient {
           String encodedMessage = username + ";" + sentence;
           sentData = encodedMessage.getBytes();
 
-          sendPacket =
-            new DatagramPacket(sentData, sentData.length, ipAddress, port);
+          sendPacket = new DatagramPacket(sentData, sentData.length, ipAddress, port);
           socket.send(sendPacket); // Envía el paquete al servidor
-          socket.close();
+          // socket.close(); // CREO QUE ESTE ERA EL PROBLEMA
         }
       } catch (Exception e) {
         e.printStackTrace();
@@ -68,11 +66,10 @@ public class ChatClient {
       sentData = encodedSentence.getBytes();
 
       DatagramPacket sendPacket = new DatagramPacket(
-        sentData,
-        sentData.length,
-        ipAddress,
-        port
-      );
+          sentData,
+          sentData.length,
+          ipAddress,
+          port);
       socket.send(sendPacket); // Envía el paquete al servidor
       socket.close();
       return;
