@@ -69,3 +69,14 @@
     boolean contains = fruits.contains("Manzana");
     System.out.println("¿La lista contiene manzana? " + contains);
     ```
+
+8. **Arrays.asList()** To convert an array into a List in Java:
+
+    ```java
+
+    String[] stringsArray = {"apple", "banana", "orange"};
+
+    // Convert the array to a List
+    List<String> stringsList = Arrays.asList(stringsArray);
+
+    ```

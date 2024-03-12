@@ -1,0 +1,2 @@
+- Manifest
+- Strings.xml

@@ -5,6 +5,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+
+import org.hibernate.internal.util.type.PrimitiveWrapperHelper.IntegerDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,16 +33,16 @@ public class IeharrisonController {
       @ApiResponse(responseCode = "200", description = "Ieharrison created successfully"),
       @ApiResponse(responseCode = "205", description = "WARNING: Ieharrison partially created (fields missing)"),
   })
-  public ResponseEntity<String> createIeharrison(
+  public ResponseEntity<?> createIeharrison(
       @RequestBody Ieharrison ieharrison) {
     if (ieharrison.getName() == null ||
         ieharrison.getSurname() == null ||
         ieharrison.getBalance() == null ||
         ieharrison.getEmail() == null) {
-      System.out.println("Missing fields detected: " + ieharrison);
+      ieharrisonService.createIeharrison(ieharrison);
       return ResponseEntity
-          .status(HttpStatus.PARTIAL_CONTENT)
-          .body("ERROR: Ieharrison partially created (fields missing)");
+          .status(205)
+          .body("WARNING: Ieharrison partially created (fields missing)"); // 205 NO DEJA IMPRIMIR COSAS
     } else {
       ieharrisonService.createIeharrison(ieharrison);
       return ResponseEntity.ok("Ieharrison created successfully");
@@ -54,11 +56,11 @@ public class IeharrisonController {
   })
   public ResponseEntity<String> removeIeharrison(@PathVariable String id) {
     if (ieharrisonService.removeIeharrison(Integer.parseInt(id))) {
-      return ResponseEntity.ok("Se ha borrado la ieharrison correctamente");
+      return ResponseEntity.ok("IEHarrison removed succesfully");
     } else {
       return ResponseEntity
-          .status(201)
-          .body("ERROR: no se ha realizado el registro, no estaba en la DB");
+          .status(209)
+          .body("ERROR: IEHarrison not removed, couldnt be found on DB");
     }
   }
 
@@ -67,10 +69,17 @@ public class IeharrisonController {
       @ApiResponse(responseCode = "200", description = "Ieharrison found succesfully"),
       @ApiResponse(responseCode = "209", description = "ERROR: ieharrison not found"),
   })
-  public ResponseEntity<Optional<Ieharrison>> findIeharrison(
+  public ResponseEntity<?> findIeharrison(
       @PathVariable String id) {
-    return ResponseEntity.ok(
-        ieharrisonService.findIeharrison(Integer.parseInt(id)));
+    Optional<Ieharrison> ieharrison = ieharrisonService.findIeharrison(Integer.parseInt(id)); // por sino lo encuentra
+
+    if (ieharrison.isPresent()) {
+      return ResponseEntity.status(HttpStatus.OK).body(ieharrison);
+    } else {
+      System.out.println("ERROR: ieharrison not found");
+      return ResponseEntity.status(209).body("No IEHarrison with that ID on the DB");
+    }
+
   }
 
   // todos
@@ -79,39 +88,58 @@ public class IeharrisonController {
       @ApiResponse(responseCode = "200", description = "Ieharrison elements found succesfully"),
       @ApiResponse(responseCode = "209", description = "ERROR: no elements at ieharrison"),
   })
-  public ResponseEntity<List<Ieharrison>> findAll() {
-    return ResponseEntity.ok(ieharrisonService.findAll());
+  public ResponseEntity<?> findAll() {
+    if (ieharrisonService.findAll().isEmpty()) {
+      return ResponseEntity.status(209).body("No IEHarrisons on the DB");
+    } else {
+      return ResponseEntity.ok(ieharrisonService.findAll());
+    }
   }
 
   // EDIT
-  @PostMapping("editIeharrison/{id}") // http://localhost:8080/ieharrison/editIeharrison
+  @PostMapping("editIeharrison/{id}") // Endpoint: http://localhost:8080/ieharrison/editIeharrison
   @ApiResponses({
-      @ApiResponse(responseCode = "200", description = "Ieharrison edited succesfully"),
-      @ApiResponse(responseCode = "201", description = "ERROR: ieharrison partially edited"),
+      @ApiResponse(responseCode = "200", description = "Ieharrison edited successfully"),
+      @ApiResponse(responseCode = "201", description = "Partial edit: ieharrison updated with errors"),
       @ApiResponse(responseCode = "209", description = "ERROR: ieharrison not found"),
   })
-  public ResponseEntity<Optional<Ieharrison>> editIeharrison(
+  public ResponseEntity<String> editIeharrison(
       @PathVariable String id,
       @RequestBody Ieharrison ieharrison) {
     ieharrisonService.editIeharrison(Integer.parseInt(id), ieharrison);
 
-    return ResponseEntity.ok(
-        ieharrisonService.editIeharrison(Integer.parseInt(id), ieharrison));
+    Optional<Ieharrison> editedIeharrison = ieharrisonService.editIeharrison(Integer.parseInt(id), ieharrison);
+
+    if (editedIeharrison.isPresent()) {
+      if (ieharrison.getName() == null ||
+          ieharrison.getSurname() == null ||
+          ieharrison.getBalance() == null ||
+          ieharrison.getEmail() == null) {
+        return ResponseEntity.status(201).body("IEHarrison updated partially");
+      } else {
+        return ResponseEntity.ok("IEHarrison correctly updated");
+      }
+    } else {
+      return ResponseEntity.status(209).body("Couldnt find that IEHarrison on the DB");
+    }
   }
 
   // REMOVE ALL
-  @DeleteMapping("/removeAll") // http://localhost:8080/ieharrison/removeAll
+  @DeleteMapping("/removeAll")
   @ApiResponses({
       @ApiResponse(responseCode = "200", description = "All Ieharrisons removed successfully"),
       @ApiResponse(responseCode = "204", description = "ERROR: No Ieharrisons to remove"),
   })
   public ResponseEntity<String> removeAll() {
-    if (ieharrisonService.removeAll()) {
-      return ResponseEntity.ok("All Ieharrisons removed successfully");
-    } else {
+    if (ieharrisonService.findAll().isEmpty()) {
+      System.out.println("ERROR: No Ieharrisons to remove (cant print it on TC response)");
+
       return ResponseEntity
-          .status(HttpStatus.NO_CONTENT)
-          .body("ERROR: No Ieharrisons to remove");
+          .status(204)
+          .body("ERROR: No Ieharrisons to remove"); // no me lo imprime no sé por qué
+    } else {
+      ieharrisonService.removeAll();
+      return ResponseEntity.ok("All Ieharrisons removed successfully");
     }
   }
 
@@ -123,11 +151,11 @@ public class IeharrisonController {
       @ApiResponse(responseCode = "209", description = "ID does not exist"),
   })
   public ResponseEntity<String> increaseBalance(
-      @PathVariable String id,
-      @RequestParam Float cantidad) {
+      @PathVariable Integer id,
+      @RequestBody Ieharrison ieharrison) { // LO HE HECHO CON @REQUESTBODY, NO ME SALÍA CON OTRO PATH
     Integer result = ieharrisonService.increaseBalance(
-        Integer.parseInt(id),
-        cantidad);
+        id,
+        ieharrison.getBalance());
 
     if (result != null) {
       if (result == 200) {
@@ -138,12 +166,12 @@ public class IeharrisonController {
             .body("Balance initialized and increased successfully");
       } else {
         return ResponseEntity
-            .status(HttpStatus.NOT_FOUND)
+            .status(209)
             .body("ID does not exist");
       }
     } else {
       return ResponseEntity
-          .status(HttpStatus.NOT_FOUND)
+          .status(209)
           .body("ID does not exist");
     }
   }
@@ -157,10 +185,10 @@ public class IeharrisonController {
   })
   public ResponseEntity<String> decreaseBalance(
       @PathVariable String id,
-      @RequestParam Float cantidad) {
+      @RequestBody Ieharrison ieharrison) {
     Integer result = ieharrisonService.decreaseBalance(
         Integer.parseInt(id),
-        cantidad);
+        ieharrison.getBalance());
 
     if (result != null) {
       if (result == 0) {
@@ -188,11 +216,11 @@ public class IeharrisonController {
 
     if (average != null) {
       if (average >= 0) {
-        return ResponseEntity.ok("Average balance of all records");
+        return ResponseEntity.ok("Average balance of all records : " + average);
       } else {
         return ResponseEntity
             .status(HttpStatus.CREATED)
-            .body("The average balance is negative");
+            .body("The average balance is negative : " + average);
       }
     } else {
       return ResponseEntity

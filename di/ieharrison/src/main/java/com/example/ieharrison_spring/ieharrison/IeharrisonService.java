@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 
 @Service
 @RequiredArgsConstructor
@@ -13,6 +15,7 @@ public class IeharrisonService {
   @Autowired
   private IeharrisonRepository ieharrisonRepository;
 
+  @SuppressWarnings("null")
   public void createIeharrison(Ieharrison ieharrison) {
     ieharrisonRepository.save(ieharrison);
   }
@@ -27,7 +30,9 @@ public class IeharrisonService {
   }
 
   public Optional<Ieharrison> findIeharrison(Integer id) {
+
     return ieharrisonRepository.findById(id);
+
   }
 
   public List<Ieharrison> findAll() {
@@ -35,9 +40,8 @@ public class IeharrisonService {
   }
 
   public Optional<Ieharrison> editIeharrison(
-    Integer id,
-    Ieharrison ieharrison
-  ) {
+      Integer id,
+      Ieharrison ieharrison) {
     Optional<Ieharrison> p = ieharrisonRepository.findById(id);
     if (p.isPresent()) {
       p.get().setName(ieharrison.getName());
@@ -65,14 +69,17 @@ public class IeharrisonService {
     if (optionalIeharrison.isPresent()) {
       Ieharrison ieharrison = optionalIeharrison.get();
       Float currentBalance = ieharrison.getBalance();
-      Float newBalance = currentBalance + amount;
-      ieharrison.setBalance(newBalance);
-      ieharrisonRepository.save(ieharrison);
 
-      if (currentBalance == 0) {
-        return 201; //INITIALISED
+      if (currentBalance == null) {
+        Float newBalance = amount;
+        ieharrison.setBalance(newBalance);
+        ieharrisonRepository.save(ieharrison);
+        return 201; // INITIALISED
       } else {
-        return 200; //INCREASED
+        Float newBalance = currentBalance + amount;
+        ieharrison.setBalance(newBalance);
+        ieharrisonRepository.save(ieharrison);
+        return 200; // INCREASED
       }
     } else {
       return 209; //ID NOT FOUND
@@ -90,30 +97,36 @@ public class IeharrisonService {
       ieharrisonRepository.save(ieharrison);
 
       if (newBalance >= 0) {
-        return 0; //SUCCESS
+        return 0; // SUCCESS
       } else {
-        return 1; // SUCCESS NEGATIVE
+        return 1; //SUCCESS NEGATIVE
       }
     } else {
-      return null; //ID NOT FOUND
+      return null; // ID NOT FOUND
     }
   }
 
   public Float calculateAverageBalance() {
     List<Ieharrison> allIeharrisons = ieharrisonRepository.findAll();
-    
+
     if (allIeharrisons.isEmpty()) {
-        return null;
+      return null;
     }
 
     Float sum = 0f;
     int count = 0;
     for (int i = 0; i < allIeharrisons.size(); i++) {
-        Ieharrison ieharrison = allIeharrisons.get(i);
-        sum += ieharrison.getBalance();
-        count++;
+      Ieharrison ieharrison = allIeharrisons.get(i);
+      Float balance = ieharrison.getBalance();
+
+      if (balance != null) {
+        sum += balance;
+
+      }
+      count++;
+
     }
-    
+
     return sum / count;
-}
+  }
 }
